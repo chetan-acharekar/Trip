@@ -1,10 +1,14 @@
-app.controller('tripController', function ($scope, $timeout, sharedservice, configservice, httpservice) {
+app.controller('tripController', function ($scope, $timeout, sharedservice, configservice, httpservice, socket) {
     $scope.enableForm = false;
     $scope.enableChat = false;
     $scope.chats = [];
     $scope.isLoggedIn = sharedservice.isLoggedIn();
     $scope.trips = [];
     $scope.currentTrip = null;
+
+    socket.on('updatechatlist', function (data) {
+        $scope.getchats($scope.currentTrip._id);
+    });
 
     $scope.getAlltrips = function () {
         $scope.trip = [];
@@ -19,9 +23,10 @@ app.controller('tripController', function ($scope, $timeout, sharedservice, conf
     };
 
     $scope.getchats = function (tripID) {
+        $scope.chats = [];
         httpservice.get(configservice.getTripChats + tripID)
             .then(function (response) {
-                $scope.chats = $scope.chats.concat(response.data);
+                $scope.chats = response.data;
             }, function (error) {
 
             });
@@ -50,7 +55,7 @@ app.controller('tripController', function ($scope, $timeout, sharedservice, conf
         $scope.chatMessage = "";
         httpservice.post(configservice.chatURL, chatmessage)
             .then(function (response) {
-
+                socket.emit('chatupdated', response.data.tripid);
             }, function (error) {
 
             })

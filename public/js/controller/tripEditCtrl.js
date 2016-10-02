@@ -43,10 +43,8 @@ app.controller('tripEditController', function ($scope, $timeout, sharedservice, 
                 $scope.currentTrip = $scope.trips[i];
                 break;
             }
-        };
-
-        $scope.getchats(tripID);
-    }
+        }
+    };
 
     $scope.editFields = function () {
         $scope.editable = true;

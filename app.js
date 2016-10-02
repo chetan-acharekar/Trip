@@ -7,7 +7,9 @@ var express = require('express'),
     loginroute = require('./routes/login.js'),
     triproute = require('./routes/trip.js'),
     chatroute = require('./routes/chat.js'),
-    auth = require('./middlewares/authenticator.js');
+    auth = require('./middlewares/authenticator.js'),
+    http = require('http').Server(app),
+    io = require('socket.io')(http);
 
 app.use(bodyparser.json());
 app.use(express.static('public'));
@@ -22,6 +24,14 @@ app.get('*', function (req, res) {
     res.sendFile(__dirname + '/public/index.html');
 });
 
-app.listen(5555, function () {
+http.listen(3000, function () {
     console.log('Express app started')
+});
+
+io.on('connection', function (socket) {
+    console.log('a user connected');
+    socket.on('chatupdated', function () {
+        console.log('chat updated');
+        io.emit('updatechatlist', 'msg');
+    })
 });
