@@ -71,7 +71,27 @@ app.controller('tripController', function ($scope, $timeout, sharedservice, conf
             }, function (error) {
 
             })
-    }
+    };
+
+    $scope.editFields = function () {
+        $scope.editable = true;
+    };
+
+    $scope.updateTrip = function () {
+        $scope.editable = false;
+        var updatedTrip = {
+                'title': $scope.currentTrip.title,
+                'createdBy': $scope.currentTrip.createdBy,
+                'participants': [],
+                'description': $scope.currentTrip.description
+            },
+            tripURL = configservice.tripURL + '/' + $scope.currentTrip._id;
+        httpservice.put(tripURL, updatedTrip).then(function (response) {
+
+        }, function (error) {
+
+        });
+    };
 
     $scope.getAlltrips();
 });

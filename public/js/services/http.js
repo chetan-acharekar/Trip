@@ -9,6 +9,9 @@ app.factory('httpservice', ['$http', function ($http) {
         },
         delete: function (URL, id) {
             return $http.delete(URL);
+        },
+        put: function (URL, data) {
+            return $http.put(URL, data);
         }
     }
 

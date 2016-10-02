@@ -25,5 +25,21 @@ module.exports = {
                 callback(null, response)
             }
         })
+    },
+    update: function (tripID, updates, callback) {
+        var query = {
+                '_id': tripID
+            },
+            update = {
+                $set: updates
+            },
+            options = null;
+        tripmodel.update(query, update, options, function (error, response) {
+            if (error) {
+                callback(error)
+            } else {
+                callback(null, response)
+            }
+        });
     }
 }

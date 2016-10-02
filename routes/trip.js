@@ -35,7 +35,7 @@ router.get('/', function (req, res) {
         'createdOn': new Date(),
         'participants': [],
         'description': req.body.description
-    }
+    };
     tripdbCtrl.save(trip, function (error, response) {
         if (error) {
             res.send({
@@ -49,6 +49,20 @@ router.get('/', function (req, res) {
             });
         }
     })
+}).put('/:id', function (req, res) {
+    tripdbCtrl.update(req.params.id, req.body, function (error, response) {
+        if (error) {
+            res.send({
+                'error': error
+            }).status(500);
+        } else {
+            res.json({
+                "IsError": false,
+                "Message": "Trip updated successfully",
+                "Result": response
+            });
+        }
+    });
 })
 
 module.exports = router;

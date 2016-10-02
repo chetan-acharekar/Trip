@@ -20,10 +20,23 @@
         </ul>
     </div>
     <div id="trip" class="col-md-6" ng-show="enableChat">
-        <h3>
+        <div ng-show="!editable">
+            <span class="glyphicon glyphicon-edit" ng-click="editFields()"></span>
+
+            <h3>
             {{currentTrip.title}}
         </h3>
-        <br> {{currentTrip.description}}
+            <br> {{currentTrip.description}}
+        </div>
+        <div ng-show="editable">
+            <br> Title:
+            <input type="text" ng-model="currentTrip.title" class="form-control">
+            <br> Description:
+            <br>
+            <textarea rows="10" cols="50" ng-model="currentTrip.description" class="form-control"></textarea>
+            <br>
+            <span class="glyphicon glyphicon-ok" ng-click="updateTrip()"></span>
+        </div>
         <br>
         <br>
         <!--

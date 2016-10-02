@@ -27,6 +27,7 @@ app.controller('mainController', function ($scope, sharedservice, httpservice, c
         };
     }
 
+
     $scope.getAlltrips();
 
 });
