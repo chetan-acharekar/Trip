@@ -8,7 +8,7 @@ app.controller('loginController', function ($scope, $location, httpservice, conf
         }).then(function (response) {
             if (!response.data.IsError) {
                 sharedservice.setuserlogin(response.data.user.username);
-                if (response.data.IsAdmin) {
+                if (response.data.user.IsAdmin) {
                     $location.path('/tripedit');
                 } else {
                     $location.path('/trip');
