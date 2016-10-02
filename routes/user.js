@@ -2,7 +2,8 @@
 
 var express = require('express'),
     router = express.Router(),
-    userdbCtrl = require('../db/controller/index.js').user;
+    userdbCtrl = require('../db/controller/index.js').user,
+    auth = require('../middlewares/authenticator.js');
 
 
 router.get('/', function (req, res) {
@@ -30,6 +31,21 @@ router.get('/', function (req, res) {
     });
 }).post('/', function (req, res) {
     userdbCtrl.save(req.body, function (error, response) {
+        if (error) {
+            res.send({
+                'error': error
+            }).status(500);
+        } else {
+            res.json({
+                "IsError": false,
+                "Message": "User created successfully!"
+            });
+        }
+    })
+}).post('/admin', auth, function (req, res) {
+    var adminuser = req.body;
+    adminuser.IsAdmin = true;
+    userdbCtrl.save(adminuser, function (error, response) {
         if (error) {
             res.send({
                 'error': error

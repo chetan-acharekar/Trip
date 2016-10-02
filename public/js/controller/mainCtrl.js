@@ -1,9 +1,8 @@
-// public/js/controllers/MainCtrl.js
 app.controller('mainController', function ($scope, sharedservice, httpservice, configservice) {
 
     $scope.tagline = 'Only if you have been in the deepest valley, can you ever know how magnificent it is to be on the highest mountain. — Richard M. Nixon';
-    $scope.isLoggedIn = sharedservice.isLoggedIn;
-    $scope.username = sharedservice.username;
+    $scope.isLoggedIn = sharedservice.isLoggedIn();
+    $scope.username = sharedservice.username();
     $scope.trips = [];
     $scope.currentTrip = {};
     $scope.getAlltrips = function () {

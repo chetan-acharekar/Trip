@@ -5,7 +5,10 @@ var mongoose = require('mongoose'),
         'mail': String,
         'IsAdmin': Boolean,
         'password': String,
-        'username': String
+        'username': {
+            type: String,
+            unique: true
+        }
     });
 
 module.exports = mongoose.model('TblUser', userschema);

@@ -10,10 +10,14 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
             templateUrl: 'views/login.html',
             controller: 'loginController'
         })
-        .when('/trips', {
+        .when('/tripedit', {
+            templateUrl: 'views/tripedit.html',
+            controller: 'tripEditController'
+        }).when('/trip', {
             templateUrl: 'views/trip.html',
             controller: 'tripController'
         })
+
 
 
 

@@ -1,4 +1,3 @@
-// public/js/controllers/MainCtrl.js
 app.controller('loginController', function ($scope, $location, httpservice, configservice, sharedservice) {
 
     $scope.tagline = 'To the moon and back!from login';
@@ -8,9 +7,12 @@ app.controller('loginController', function ($scope, $location, httpservice, conf
             'password': $scope.password
         }).then(function (response) {
             if (!response.data.IsError) {
-                sharedservice.isLoggedIn = true;
-                sharedservice.username = response.data.user.username;
-                $location.path('/trips');
+                sharedservice.setuserlogin(response.data.user.username);
+                if (response.data.IsAdmin) {
+                    $location.path('/tripedit');
+                } else {
+                    $location.path('/trip');
+                }
                 //$scope.$apply();
             } else {
                 alert('User Validation Failed')
