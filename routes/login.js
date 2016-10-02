@@ -23,7 +23,8 @@ router.post('/', function (req, res) {
         } else {
             res.json({
                 "IsError": false,
-                "Message": "User validated"
+                "Message": "User validated",
+                "user": response[0]
             });
         }
     })

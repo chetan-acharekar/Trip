@@ -3,10 +3,11 @@ app.controller('tripController', function ($scope, $timeout, sharedservice, conf
     $scope.enableForm = false;
     $scope.enableChat = false;
     $scope.chats = [];
-
+    $scope.isLoggedIn = sharedservice.isLoggedIn;
     $scope.trips = [];
 
     $scope.currentTrip = null;
+
 
     $scope.createTrip = function () {
         httpservice.post(configservice.tripURL, {
@@ -81,7 +82,8 @@ app.controller('tripController', function ($scope, $timeout, sharedservice, conf
         $scope.editable = false;
         var updatedTrip = {
                 'title': $scope.currentTrip.title,
-                'createdBy': $scope.currentTrip.createdBy,
+                'updatedBy': sharedservice.username,
+                'lastUpdatedon': new Date(),
                 'participants': [],
                 'description': $scope.currentTrip.description
             },

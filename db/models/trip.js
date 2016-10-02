@@ -3,6 +3,8 @@ var mongoose = require('mongoose'),
         'title': String,
         'createdBy': String,
         'createdOn': Date,
+        'updatedBy': String,
+        'lastUpdatedon': Date,
         'participants': Array,
         'description': String
     });

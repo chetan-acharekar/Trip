@@ -9,6 +9,7 @@ app.controller('loginController', function ($scope, $location, httpservice, conf
         }).then(function (response) {
             if (!response.data.IsError) {
                 sharedservice.isLoggedIn = true;
+                sharedservice.username = response.data.user.username;
                 $location.path('/trips');
                 //$scope.$apply();
             } else {
