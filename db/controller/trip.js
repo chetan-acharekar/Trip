@@ -41,5 +41,18 @@ module.exports = {
                 callback(null, response)
             }
         });
+    },
+    remove: function (tripID, callback) {
+        var query = {
+            '_id': tripID
+        };
+        tripmodel.remove(query, function (error, response) {
+            debugger;
+            if (error) {
+                callback(error)
+            } else {
+                callback(null)
+            }
+        });
     }
 }

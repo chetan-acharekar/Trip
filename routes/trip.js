@@ -63,6 +63,19 @@ router.get('/', function (req, res) {
             });
         }
     });
+}).delete('/:id', function (req, res) {
+    tripdbCtrl.remove(req.params.id, function (error) {
+        if (error) {
+            res.send({
+                'error': error
+            }).status(500);
+        } else {
+            res.json({
+                "IsError": false,
+                "Message": "Trip Deleted successfully"
+            });
+        }
+    });
 })
 
 module.exports = router;

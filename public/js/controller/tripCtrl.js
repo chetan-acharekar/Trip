@@ -26,10 +26,11 @@ app.controller('tripController', function ($scope, $timeout, sharedservice, conf
     };
 
     $scope.getAlltrips = function () {
+        $scope.trip = [];
         httpservice.get(configservice.tripURL)
             .then(function (response) {
                 $scope.currentTrip = response.data[response.data.length - 1];
-                $scope.trips = $scope.trips.concat(response.data);
+                $scope.trips = response.data;
                 //$timeout($scope.$apply(), 0);
             }, function (error) {
 
@@ -94,6 +95,17 @@ app.controller('tripController', function ($scope, $timeout, sharedservice, conf
 
         });
     };
+
+    $scope.deletetrip = function () {
+        var tripURL = configservice.tripURL + '/' + $scope.currentTrip._id;
+        httpservice.delete(tripURL).then(function (response) {
+            if (!response.data.IsError) {
+                $scope.getAlltrips();
+            }
+        }, function (error) {
+
+        });
+    }
 
     $scope.getAlltrips();
 });

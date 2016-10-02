@@ -4,7 +4,6 @@ var mongoose = require('mongoose'),
 
 module.exports = {
     find: function (query, callback) {
-        debugger;
         if (callback == null) {
             callback = query;
             query = null;

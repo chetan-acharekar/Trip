@@ -25,11 +25,13 @@
     <div id="trip" class="col-md-6" ng-show="enableChat">
         <div ng-show="!editable">
             <span class="glyphicon glyphicon-edit" ng-click="editFields()"></span>
+            <span class="glyphicon glyphicon-remove" ng-click="deletetrip()"></span>
 
             <h3>
             {{currentTrip.title}}
         </h3>
             <br> {{currentTrip.description}}
+            <br> By- {{currentTrip.createdBy}}
         </div>
         <div ng-show="editable">
             <br> Title:
