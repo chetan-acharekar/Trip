@@ -33,12 +33,14 @@ router.get('/', function (req, res) {
     userdbCtrl.save(req.body, function (error, response) {
         if (error) {
             res.send({
-                'error': error
+                'error': error,
+                "IsError": true
             }).status(500);
         } else {
             res.json({
                 "IsError": false,
-                "Message": "User created successfully!"
+                "Message": "User created successfully!",
+                "user": response
             });
         }
     })
@@ -48,8 +50,9 @@ router.get('/', function (req, res) {
     userdbCtrl.save(adminuser, function (error, response) {
         if (error) {
             res.send({
-                'error': error
-            }).status(500);
+                'error': error,
+                "IsError": true
+            });
         } else {
             res.json({
                 "IsError": false,

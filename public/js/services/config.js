@@ -3,6 +3,7 @@ app.factory('configservice', function ($http) {
         'loginURL': '/api/login',
         'tripURL': '/api/trip',
         'chatURL': '/api/chat',
-        'getTripChats': '/api/chat/trip/'
+        'getTripChats': '/api/chat/trip/',
+        'postUser': '/api/user'
     }
 });
