@@ -104,7 +104,7 @@ app.controller('tripEditController', function ($scope, $timeout, $window, shared
                 file.result = response.data;
             });
         }, function (error) {
-            error.log('failed ' + error);
+            console.log('failed ' + error);
             //            if (response.status > 0)
             //                $scope.errorMsg = response.status + ': ' + response.data;
         }, function (evt) {
