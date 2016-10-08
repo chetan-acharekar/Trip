@@ -2,10 +2,12 @@
 
 <div class="jumbotron ">
     <div class="row">
-        <div class="col-md-4">
-            <img src="assets/image2.jpg" class="img-rounded" alt="Cinque Terre" width="300" height="236">
-        </div>
-        <div class="col-md-8">
+        <!--
+   <div class="col-md-4">
+    <img src="assets/image2.jpg" class="img-rounded" alt="Cinque Terre" width="300" height="236">
+</div>
+-->
+        <div class="col-md-10">
             <h2>Lets explore life !</h2>
             <p>{{ tagline }}</p>
         </div>
@@ -13,7 +15,7 @@
 </div>
 
 <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-2">
         <h4>
         Current Trips are:
         </h4>
@@ -25,12 +27,15 @@
             </li>
         </ul>
     </div>
-    <div id="trip" class="col-md-9">
+    <div id="trip" class="col-md-6">
         <h3>
             {{currentTrip.title}}
         </h3>
         <br> {{currentTrip.description}}
         <br>
         <br>
+    </div>
+    <div class="col-md-4" ng-if="currentTrip.image">
+        <img src="uploads/{{currentTrip.image}}" class="img-rounded" alt="image not found" width="300" height="236">
     </div>
 </div>

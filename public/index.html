@@ -43,7 +43,12 @@
     <script src="js/app.js"></script>
     <script src="js/approutes.js"></script>
 
-    <!--    COntroller-->
+    <!-- for no html5 browsers support -->
+    <script src="libs/ng-file-upload/ng-file-upload-shim.min.js"></script>
+    <script src="libs/ng-file-upload/ng-file-upload.min.js"></script>
+
+
+    <!--    Controller-->
     <script src="js/controller/mainCtrl.js"></script>
     <script src="js/controller/loginCtrl.js"></script>
     <script src="js/controller/tripEditCtrl.js"></script>
@@ -74,7 +79,7 @@
                     <a href="/login">Login/Signup</a>
                 </li>
             </ul>
-<!--            <div class="g-signin2" data-onsuccess="onSignIn"></div>-->
+            <!--            <div class="g-signin2" data-onsuccess="onSignIn"></div>-->
         </nav>
 
         <!-- ANGULAR DYNAMIC CONTENT -->

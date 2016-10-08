@@ -3,14 +3,22 @@
 </div>
 <div class="row" ng-show="isLoggedIn">
     <div class="col-md-6">
-        Title:
-        <br>
-        <input type="text" ng-model="title" class="form-control">
-        <br> Description:
-        <br>
-        <textarea rows="4" cols="50" ng-model="description" class="form-control"></textarea>
-        <br>
-        <button class="btn btn-primary" ng-click="createTrip()">Create</button>
+        <form>
+            Title:
+            <br>
+            <input type="text" ng-model="title" class="form-control" required="true">
+            <br> Description:
+            <br>
+            <textarea rows="4" cols="50" ng-model="description" class="form-control" required="true"></textarea>
+            <br>
+
+            <input type="file" ngf-select ng-model="picFile">
+            <br>
+
+            <!--<button ng-click="uploadPic()">Submit</button>-->
+            <button class="btn btn-primary" ng-click="uploadPic(picFile)">Create</button>
+
+        </form>
         <h4>
         Current Trips are:
         </h4>
@@ -45,7 +53,10 @@
             <br>
             <textarea rows="10" cols="50" ng-model="currentTrip.description" class="form-control"></textarea>
             <br>
-            <span class="glyphicon glyphicon-ok" ng-click="updateTrip()"></span>
+            <input type="file" ngf-select ng-model="updatepicFile">
+            <br>
+            <br>
+            <span class="glyphicon glyphicon-ok" ng-click="updateTrip(updatepicFile)"></span>
         </div>
         <br>
         <br>

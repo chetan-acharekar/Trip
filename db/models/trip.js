@@ -6,7 +6,8 @@ var mongoose = require('mongoose'),
         'updatedBy': String,
         'lastUpdatedon': Date,
         'participants': Array,
-        'description': String
+        'description': String,
+        'image': String
     });
 
 module.exports = mongoose.model('TblTrip', tripchema);

@@ -1,9 +1,9 @@
-app.controller('tripEditController', function ($scope, $timeout, sharedservice, configservice, httpservice) {
+app.controller('tripEditController', function ($scope, $timeout, $window, sharedservice, configservice, httpservice, Upload) {
     $scope.enableForm = false;
     $scope.enableChat = false;
     $scope.isLoggedIn = sharedservice.isLoggedIn();
     $scope.trips = [];
-
+    $scope.picFile = null;
     $scope.currentTrip = null;
 
 
@@ -50,17 +50,23 @@ app.controller('tripEditController', function ($scope, $timeout, sharedservice, 
         $scope.editable = true;
     };
 
-    $scope.updateTrip = function () {
+    $scope.updateTrip = function (file) {
         $scope.editable = false;
         var updatedTrip = {
                 'title': $scope.currentTrip.title,
                 'updatedBy': sharedservice.username(),
                 'lastUpdatedon': new Date(),
                 'participants': [],
-                'description': $scope.currentTrip.description
+                'description': $scope.currentTrip.description,
+                'image': file ? null : $scope.currentTrip.image
             },
             tripURL = configservice.tripURL + '/' + $scope.currentTrip._id;
-        httpservice.put(tripURL, updatedTrip).then(function (response) {
+        Upload.upload({
+            url: tripURL,
+            data: updatedTrip,
+            file: file,
+            method: "PUT"
+        }).then(function (response) {
 
         }, function (error) {
 
@@ -75,6 +81,35 @@ app.controller('tripEditController', function ($scope, $timeout, sharedservice, 
             }
         }, function (error) {
 
+        });
+    }
+
+
+
+    $scope.uploadPic = function (file) {
+        Upload.upload({
+            url: configservice.tripURL,
+            data: {
+                'title': $scope.title,
+                'createdBy': sharedservice.username(),
+                'description': $scope.description
+            },
+            file: file
+        }).then(function (response) {
+            $scope.title = "";
+            $scope.description = "";
+            $scope.picFile = null;
+            $scope.trips.push(response.data.Result);
+            $timeout(function () {
+                file.result = response.data;
+            });
+        }, function (error) {
+            error.log('failed ' + error);
+            //            if (response.status > 0)
+            //                $scope.errorMsg = response.status + ': ' + response.data;
+        }, function (evt) {
+            // Math.min is to fix IE which reports 200% sometimes
+            //file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
         });
     }
 
