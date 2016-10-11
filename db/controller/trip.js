@@ -47,7 +47,6 @@ module.exports = {
             '_id': tripID
         };
         tripmodel.remove(query, function (error, response) {
-            debugger;
             if (error) {
                 callback(error)
             } else {

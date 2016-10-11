@@ -4,6 +4,7 @@ app.factory('configservice', function ($http) {
         'tripURL': '/api/trip',
         'chatURL': '/api/chat',
         'getTripChats': '/api/chat/trip/',
-        'postUser': '/api/user'
+        'postUser': '/api/user',
+        'uploadImage': '/api/image'
     }
 });

@@ -10,12 +10,21 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
             templateUrl: 'views/login.html',
             controller: 'loginController'
         })
-        .when('/tripedit', {
+        .when('/tripadd', {
+            templateUrl: 'views/tripadd.html',
+            controller: 'tripAddController'
+        }).when('/chat', {
+            templateUrl: 'views/chat.html',
+            controller: 'chatController'
+        }).when('/menu', {
+            templateUrl: 'views/adminmenu.html',
+            controller: 'adminMenuController'
+        }).when('/upload', {
+            templateUrl: 'views/uploadimages.html',
+            controller: 'uploadController'
+        }).when('/tripedit', {
             templateUrl: 'views/tripedit.html',
             controller: 'tripEditController'
-        }).when('/trip', {
-            templateUrl: 'views/trip.html',
-            controller: 'tripController'
         })
 
 

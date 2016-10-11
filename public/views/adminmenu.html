@@ -1,0 +1,9 @@
+<div class="row" ng-show="!isLoggedIn">
+    You need to login first!!
+</div>
+
+<div class="row" ng-show="isLoggedIn">
+    <button ng-click="createNew()">Create</button>
+    <button ng-click="edit()">Edit</button>
+    <button ng-click="uploadImages()">uploadImages</button>
+</div>

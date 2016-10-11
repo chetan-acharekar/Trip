@@ -1,4 +1,4 @@
-app.controller('tripController', function ($scope, $timeout, sharedservice, configservice, httpservice, socket) {
+app.controller('chatController', function ($scope, $timeout, sharedservice, configservice, httpservice, socket) {
     $scope.enableForm = false;
     $scope.enableChat = false;
     $scope.chats = [];

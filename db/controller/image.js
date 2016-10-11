@@ -1,5 +1,5 @@
 var mongoose = require('mongoose'),
-    chatmodel = require('../models/index.js').chat;
+    imagemodel = require('../models/index.js').image;
 
 
 module.exports = {
@@ -8,7 +8,7 @@ module.exports = {
             callback = query;
             query = null;
         }
-        chatmodel.find(query, function (error, response) {
+        imagemodel.find(query, function (error, response) {
             if (error) {
                 callback(error)
             } else {
@@ -16,9 +16,8 @@ module.exports = {
             }
         })
     },
-    save: function (chat, callback) {
-        var chatbject = new chatmodel(chat);
-        chatbject.save(function (error, response) {
+    save: function (images, callback) {
+        imagemodel.collection.insert(images, function (error, response) {
             if (error) {
                 callback(error)
             } else {

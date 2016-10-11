@@ -1,1 +1,1 @@
-var app = angular.module('trekApp', ['ngRoute', 'btford.socket-io', 'ngFileUpload']);
+var app = angular.module('trekApp', ['ngRoute', 'btford.socket-io', 'ngFileUpload', 'textAngular', 'ui.bootstrap']);

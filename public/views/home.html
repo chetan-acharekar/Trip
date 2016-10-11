@@ -1,18 +1,20 @@
 <!-- public/views/home.html -->
 
+<!--
 <div class="jumbotron ">
     <div class="row">
-        <!--
-   <div class="col-md-4">
-    <img src="assets/image2.jpg" class="img-rounded" alt="Cinque Terre" width="300" height="236">
-</div>
--->
+
+        <div class="col-md-4">
+            <img src="assets/image2.jpg" class="img-rounded" alt="Cinque Terre" width="300" height="236">
+        </div>
+
         <div class="col-md-10">
             <h2>Lets explore life !</h2>
             <p>{{ tagline }}</p>
         </div>
     </div>
 </div>
+-->
 
 <div class="row">
     <div class="col-md-2">
@@ -31,11 +33,12 @@
         <h3>
             {{currentTrip.title}}
         </h3>
-        <br> {{currentTrip.description}}
+        <br>
+        <div ta-bind="text" ng-model="currentTrip.description" ta-readonly='disabled'></div>
         <br>
         <br>
     </div>
-    <div class="col-md-4" ng-if="currentTrip.image">
-        <img src="uploads/{{currentTrip.image}}" class="img-rounded" alt="image not found" width="300" height="236">
+    <div class="col-md-4">
+
     </div>
 </div>

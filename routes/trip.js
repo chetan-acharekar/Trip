@@ -2,20 +2,6 @@
 
 var express = require('express'),
     router = express.Router(),
-    multer = require('multer'),
-    storage = multer.diskStorage({ //multers disk storage settings
-        destination: function (req, file, cb) {
-            cb(null, './public/uploads')
-        },
-        filename: function (req, file, cb) {
-            debugger;
-            var datetimestamp = Date.now();
-            cb(null, file.fieldname + '-' + datetimestamp + '.' + file.originalname.split('.')[file.originalname.split('.').length - 1])
-        }
-    }),
-    upload = multer({ //multer settings
-        storage: storage
-    }),
     tripdbCtrl = require('../db/controller/index.js').trip;
 
 
@@ -42,14 +28,13 @@ router.get('/', function (req, res) {
             res.json(response[0]);
         }
     });
-}).post('/', upload.any(), function (req, res) {
+}).post('/', function (req, res) {
     var trip = {
         'title': req.body.title,
         'createdBy': req.body.createdBy,
         'createdOn': new Date(),
         'participants': [],
-        'description': req.body.description,
-        'image': req.files[0] ? req.files[0].filename : null
+        'description': req.body.description
     };
     tripdbCtrl.save(trip, function (error, response) {
         if (error) {
@@ -64,8 +49,7 @@ router.get('/', function (req, res) {
             });
         }
     })
-}).put('/:id', upload.any(), function (req, res) {
-    req.body.image = req.files[0] ? req.files[0].filename : req.body.image;
+}).put('/:id', function (req, res) {
     tripdbCtrl.update(req.params.id, req.body, function (error, response) {
         if (error) {
             res.send({

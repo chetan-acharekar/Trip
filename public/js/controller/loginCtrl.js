@@ -10,9 +10,9 @@ app.controller('loginController', function ($scope, $location, httpservice, conf
             if (!response.data.IsError) {
                 sharedservice.setuserlogin(response.data.user.username);
                 if (response.data.user.IsAdmin) {
-                    $location.path('/tripedit');
+                    $location.path('/menu');
                 } else {
-                    $location.path('/trip');
+                    $location.path('/chat');
                 }
                 //$scope.$apply();
             } else {

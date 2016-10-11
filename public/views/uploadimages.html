@@ -1,0 +1,9 @@
+<div ng-repeat="alertupdate in alerts">
+    <div class={{alertupdate.class}}>
+        <a href="#" class="close" ng-click="closeAlert($index)" aria-label="close">&times;</a> {{alertupdate.msg}}
+    </div>
+</div>
+<br>
+<input type="file" ngf-select ng-model="picFiles" ngf-multiple="true">
+<br>
+<button class="btn btn-primary" ng-click="uploadPic(picFiles)">Upload</button>

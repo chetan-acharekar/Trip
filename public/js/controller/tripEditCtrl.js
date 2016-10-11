@@ -1,26 +1,19 @@
-app.controller('tripEditController', function ($scope, $timeout, $window, sharedservice, configservice, httpservice, Upload) {
+app.controller('tripEditController', function ($scope, $timeout, $window, sharedservice, textAngularManager, configservice, httpservice) {
     $scope.enableForm = false;
     $scope.enableChat = false;
     $scope.isLoggedIn = sharedservice.isLoggedIn();
     $scope.trips = [];
+    $scope.alerts = [];
     $scope.picFile = null;
     $scope.currentTrip = null;
 
 
-    $scope.createTrip = function () {
-        httpservice.post(configservice.tripURL, {
-                'title': $scope.title,
-                'createdBy': sharedservice.username(),
-                'description': $scope.description
-            })
-            .then(function (response) {
-                //alert('Trip Created!');
-                $scope.title = "";
-                $scope.description = "";
-                $scope.trips.push(response.data.Result);
-            }, function (error) {
-                error.log('failed ' + error);
-            })
+    $scope.addAlert = function (alertData) {
+        $scope.alerts.push(alertData);
+    };
+
+    $scope.closeAlert = function (index) {
+        $scope.alerts.splice(index, 1);
     };
 
     $scope.getAlltrips = function () {
@@ -41,6 +34,7 @@ app.controller('tripEditController', function ($scope, $timeout, $window, shared
         for (var i = 0; i < $scope.trips.length; i++) {
             if ($scope.trips[i]._id == tripID) {
                 $scope.currentTrip = $scope.trips[i];
+                $scope.contenthtml = $scope.trips[i].description;
                 break;
             }
         }
@@ -57,21 +51,24 @@ app.controller('tripEditController', function ($scope, $timeout, $window, shared
                 'updatedBy': sharedservice.username(),
                 'lastUpdatedon': new Date(),
                 'participants': [],
-                'description': $scope.currentTrip.description,
-                'image': file ? null : $scope.currentTrip.image
+                'description': $scope.currentTrip.description
             },
             tripURL = configservice.tripURL + '/' + $scope.currentTrip._id;
-        Upload.upload({
-            url: tripURL,
-            data: updatedTrip,
-            file: file,
-            method: "PUT"
-        }).then(function (response) {
+        httpservice.put(tripURL, updatedTrip)
+            .then(function (response) {
+                $scope.addAlert({
+                    msg: 'Trip Updated',
+                    class: 'alert alert-success'
+                })
 
-        }, function (error) {
-
-        });
+            }, function (error) {
+                $scope.addAlert({
+                    msg: 'Failed to update Trip',
+                    class: 'alert alert-danger'
+                })
+            });
     };
+
 
     $scope.deletetrip = function () {
         var tripURL = configservice.tripURL + '/' + $scope.currentTrip._id;
@@ -81,35 +78,6 @@ app.controller('tripEditController', function ($scope, $timeout, $window, shared
             }
         }, function (error) {
 
-        });
-    }
-
-
-
-    $scope.uploadPic = function (file) {
-        Upload.upload({
-            url: configservice.tripURL,
-            data: {
-                'title': $scope.title,
-                'createdBy': sharedservice.username(),
-                'description': $scope.description
-            },
-            file: file
-        }).then(function (response) {
-            $scope.title = "";
-            $scope.description = "";
-            $scope.picFile = null;
-            $scope.trips.push(response.data.Result);
-            $timeout(function () {
-                file.result = response.data;
-            });
-        }, function (error) {
-            console.log('failed ' + error);
-            //            if (response.status > 0)
-            //                $scope.errorMsg = response.status + ': ' + response.data;
-        }, function (evt) {
-            // Math.min is to fix IE which reports 200% sometimes
-            //file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
         });
     }
 

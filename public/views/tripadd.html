@@ -1,0 +1,99 @@
+<div class="row" ng-show="!isLoggedIn">
+    You need to login first!!
+</div>
+
+<div class="app row">
+
+    <div class="col-md-6">
+        <div ng-repeat="alertupdate in alerts">
+            <div class={{alertupdate.class}}>
+                <a href="#" class="close" ng-click="closeAlert($index)" aria-label="close">&times;</a> {{alertupdate.msg}}
+            </div>
+        </div>
+        <form>
+            <button class="btn btn-primary" ng-click="createTrip()">Create</button>
+            <br>
+            <br>Title:
+            <br>
+            <input type="text" ng-model="title" class="form-control" required="true">
+            <br> Description:
+            <br>
+            <div text-angular="text-angular" name="htmlcontent" ng-model="htmlcontent" ta-disabled='disabled'>
+            </div>
+            <br>
+        </form>
+    </div>
+    <br>
+    <div class="col-md-6">
+        Preview
+        <br>
+        <h2>{{title}}</h2>
+        <div ta-bind="text" ng-model="htmlcontent" ta-readonly='disabled'></div>
+    </div>
+</div>
+<!--
+<div class="row" ng-show="!isLoggedIn">
+    You need to login first!!
+</div>
+<div class="row" ng-show="isLoggedIn">
+    <div class="col-md-6">
+        <form>
+            Title:
+            <br>
+            <input type="text" ng-model="title" class="form-control" required="true">
+            <br> Description:
+            <br>
+            <textarea rows="4" cols="50" ng-model="description" class="form-control" required="true"></textarea>
+            <br>
+    </div>
+    <br>
+    <input type="file" ngf-select ng-model="picFile">
+
+
+    <button ng-click="uploadPic()">Submit</button>
+    <button class="btn btn-primary" ng-click="uploadPic(picFile)">Create</button>
+
+    </form>
+    <h4>
+        Current Trips are:
+        </h4>
+    <ul>
+        <li ng-repeat="tripObject in trips| orderBy: '-createdOn' ">
+            <a href="#trip" ng-click="updateID(tripObject._id)">
+            {{tripObject.title}}
+        </a>
+        </li>
+    </ul>
+</div>
+<div id="trip" class="col-md-6" ng-show="enableChat">
+    <div ng-show="!editable">
+        <div class="row">
+            <div class="col-md-1">
+                <span class="glyphicon glyphicon-edit" ng-click="editFields()"></span>
+            </div>
+            <div class="col-md-1">
+                <span class="glyphicon glyphicon-remove" ng-click="deletetrip()"></span>
+            </div>
+        </div>
+        <h3>
+            {{currentTrip.title}}
+        </h3>
+        <br> {{currentTrip.description}}
+        <br> By- {{currentTrip.createdBy}}
+    </div>
+    <div ng-show="editable">
+        <br> Title:
+        <input type="text" ng-model="currentTrip.title" class="form-control">
+        <br> Description:
+        <br>
+        <textarea rows="10" cols="50" ng-model="currentTrip.description" class="form-control"></textarea>
+        <br>
+        <input type="file" ngf-select ng-model="updatepicFile">
+        <br>
+        <br>
+        <span class="glyphicon glyphicon-ok" ng-click="updateTrip(updatepicFile)"></span>
+    </div>
+    <br>
+    <br>
+</div>
+</div>-->
