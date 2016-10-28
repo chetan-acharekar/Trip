@@ -3,6 +3,15 @@ var mongoose = require('mongoose'),
 
 
 module.exports = {
+    distinct: function (field, callback) {
+        imagemodel.distinct(field, function (error, response) {
+            if (error) {
+                callback(error)
+            } else {
+                callback(null, response)
+            }
+        })
+    },
     find: function (query, callback) {
         if (callback == null) {
             callback = query;

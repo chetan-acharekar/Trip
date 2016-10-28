@@ -4,32 +4,44 @@
 <head>
     <meta charset="UTF-8">
 
-    <title>Treks</title>
-    <!-- CSS -->
-    <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
-    <!-- custom styles -->
-
-
-    <!--    Text Formatter-->
-    <link rel='stylesheet' href='/bower_components/textAngular/dist/textAngular.css'>
-    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,300">
-
-
-
-
+    <title>Trekking Toad</title>
 
     <!-- JS -->
     <script src="libs/angular/angular.min.js"></script>
     <script src="libs/angular-route/angular-route.min.js"></script>
-
     <script src="libs/angular-bootstrap/ui-bootstrap.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="libs/bootstrap/dist/css/bootstrap.min.css">
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.min.js"></script>
+    <link href="libs/angular-carousel/dist/angular-carousel.css" rel="stylesheet" type="text/css" />
+
+
+
+
+    <!-- custom styles -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/bubble.css">
+
+    <!--    Text Formatter-->
+    <link rel='stylesheet' href='/libs/textAngular/dist/textAngular.css'>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,300">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Tangerine">
+    <link href="https://fonts.googleapis.com/css?family=Architects+Daughter|Exo|Maven+Pro|Rokkitt|Slabo+27px" rel="stylesheet">
+
+
+
+
+
+
 
 
     <!--    google login-->
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <meta name="google-signin-client_id" content="533995037880-0tm87rmjrvshj5a10jv460t4d8uktekf.apps.googleusercontent.com">
+    <!--
+   <script src="https://apis.google.com/js/platform.js" async defer></script>
+<meta name="google-signin-client_id" content="533995037880-0tm87rmjrvshj5a10jv460t4d8uktekf.apps.googleusercontent.com">
+-->
 
     <!--    socket-->
     <!--    <script src="libs/socket.io-client/socket.io.js"></script>-->
@@ -51,6 +63,10 @@
     -->
 
 
+    <script src="libs/angular-touch/angular-touch.js"></script>
+    <script src="libs/angular-carousel/dist/angular-carousel.js"></script>
+
+
 
     <!-- ANGULAR CUSTOM -->
     <script src="js/app.js"></script>
@@ -69,6 +85,10 @@
     <script src="js/controller/chatCtrl.js"></script>
     <script src="js/controller/adminmenuCtrl.js"></script>
     <script src="js/controller/uploadimagesCtrl.js"></script>
+    <script src="js/controller/blogCtrl.js"></script>
+    <script src="js/controller/specificblogCtrl.js"></script>
+    <script src="js/controller/trekCtrl.js"></script>
+
 
 
     <!--     SERVICES-->
@@ -76,6 +96,8 @@
     <script src="js/services/config.js"></script>
     <script src="js/services/sharedservice.js"></script>
     <script src="js/services/socket.js"></script>
+    <script src="js/services/alleventservice.js"></script>
+
 
 
     <!--    Text Formatter-->
@@ -87,27 +109,37 @@
 </head>
 
 <body ng-app="trekApp" ng-controller="mainController">
-    <div class="container">
+    <!-- HEADER -->
+    <nav class="navbar navbar-default">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">Home</a>
+        </div>
 
-        <!-- HEADER -->
-        <nav class="navbar navbar-inverse">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="/">Home</a>
-            </div>
+        <!-- LINK TO OUR PAGES. ANGULAR HANDLES THE ROUTING HERE -->
+        <ul class="nav navbar-nav">
 
-            <!-- LINK TO OUR PAGES. ANGULAR HANDLES THE ROUTING HERE -->
-            <ul class="nav navbar-nav">
-                <li>
-                    <a href="/login">Login/Signup</a>
-                </li>
-            </ul>
-            <!--            <div class="g-signin2" data-onsuccess="onSignIn"></div>-->
-        </nav>
+            <li>
+                <a href="/blogs">Blogs</a>
+            </li>
+            <li>
+                <a href="/treks">Treks</a>
+            </li>
+            <li>
+                <a href="/login">
+                    <div ng-show="isLoggedIn">Logged in as {{username}}, Logout </div>
+                    <div ng-show="!isLoggedIn">Login</div>
+                </a>
+            </li>
+            <li>
+                <a href="/menu" ng-show="isAdmin">ADMIN MENU</a>
+            </li>
+        </ul>
+        <!--            <div class="g-signin2" data-onsuccess="onSignIn"></div>-->
+    </nav>
 
-        <!-- ANGULAR DYNAMIC CONTENT -->
-        <div ng-view></div>
 
-    </div>
+    <!-- ANGULAR DYNAMIC CONTENT -->
+    <div ng-view style="overflow:hidden;"> </div>
 </body>
 
 </html>

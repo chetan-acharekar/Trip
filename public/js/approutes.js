@@ -5,12 +5,14 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         .when('/', {
             templateUrl: 'views/home.html',
             controller: 'mainController'
-        })
-        .when('/login', {
+        }).when('/blogs', {
+            templateUrl: 'views/blogs.html',
+            //template: 'hi',
+            controller: 'blogsController'
+        }).when('/login', {
             templateUrl: 'views/login.html',
             controller: 'loginController'
-        })
-        .when('/tripadd', {
+        }).when('/tripadd', {
             templateUrl: 'views/tripadd.html',
             controller: 'tripAddController'
         }).when('/chat', {
@@ -25,8 +27,16 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         }).when('/tripedit', {
             templateUrl: 'views/tripedit.html',
             controller: 'tripEditController'
-        })
-
+        }).when('/specificblogs/:param1', {
+            //template: '<div>Hi {{param1}}</div>',
+            templateUrl: '/views/specificBlog.html',
+            controller: 'specificBlogController'
+        }).when('/treks', {
+            templateUrl: 'views/treks.html',
+            controller: 'treksController'
+        }).otherwise({
+            redirectTo: '/'
+        });
 
 
 

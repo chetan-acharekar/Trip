@@ -1,67 +1,93 @@
-<div class="row" ng-show="!isLoggedIn">
-    You need to login first!!
-</div>
-<div class="row" ng-show="isLoggedIn">
-    <div class="col-md-2">
-        <h4>
+<div class="container">
+    <div class="row" ng-show="!isLoggedIn">
+        You need to login first!!
+    </div>
+    <div class="row" ng-show="isLoggedIn">
+        <div class="col-md-2">
+
+            <h4>
         Select:
         </h4>
-        <ul>
-            <li ng-repeat="tripObject in trips| orderBy: '-createdOn' ">
-                <a href="#trip" ng-click="updateID(tripObject._id)">
+            <ul>
+                <li ng-repeat="tripObject in trips| orderBy: '-createdOn' ">
+                    <a href="#trip" ng-click="updateID(tripObject._id)">
             {{tripObject.title}}
         </a>
-            </li>
-        </ul>
-    </div>
-    <div id="trip" class="col-md-5  " ng-show="enableChat">
-        <div ng-repeat="alertupdate in alerts">
-            <div class={{alertupdate.class}}>
-                <a href="#" class="close" ng-click="closeAlert($index)" aria-label="close">&times;</a> {{alertupdate.msg}}
-            </div>
+                </li>
+            </ul>
         </div>
-        <div ng-show="!editable">
-            <div class="row">
-                <div class="col-md-1">
-                    <span class="glyphicon glyphicon-edit" ng-click="editFields()"></span>
-                </div>
-                <div class="col-md-1">
-                    <span class="glyphicon glyphicon-remove" ng-click="deletetrip()"></span>
+        <div id="trip" class="col-md-8 well" ng-show="enableChat">
+            <div ng-repeat="alertupdate in alerts">
+                <div class={{alertupdate.class}}>
+                    <a href="#" class="close" ng-click="closeAlert($index)" aria-label="close">&times;</a> {{alertupdate.msg}}
                 </div>
             </div>
-            <h3>
+            <div ng-show="!editable">
+
+                <div class="row">
+                    <div class="col-md-1">
+                        <span class="glyphicon glyphicon-edit" ng-click="editFields()"></span>
+                    </div>
+                    <div class="col-md-1">
+                        <span class="glyphicon glyphicon-remove" ng-click="deletetrip()"></span>
+                    </div>
+                </div>
+                <h3>
             {{currentTrip.title}}
         </h3>
-            <br>
-            <div ta-bind="text" ng-model="currentTrip.description" ta-readonly='disabled'></div>
+                <br>
+                <div ta-bind="text" ng-model="currentTrip.description" ta-readonly='disabled'></div>
 
-            <br> By- {{currentTrip.createdBy}}
-        </div>
-        <div ng-show="editable">
-
-            <span class="glyphicon glyphicon-ok" ng-click="updateTrip()"></span>
-            <br>
-            <br> Title:
-            <input type="text" ng-model="currentTrip.title" class="form-control">
-            <br> Description:
-            <br>
-            <div text-angular="text-angular" name="htmlcontent" ng-model="currentTrip.description   " ta-disabled='disabled'>
+                <br> By- {{currentTrip.createdBy}}
             </div>
+            <div ng-show="editable">
 
-            <!--            <textarea rows="10" cols="50" ng-model="currentTrip.description" class="form-control"></textarea>-->
+                <span class="glyphicon glyphicon-ok" ng-click="updateTrip()"></span>
+                <br>
+                <br>
+                <div class="row">
+                    <div class="col-md-8">
+                        Title:
+                        <input type="text" ng-model="currentTrip.title" class="form-control">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-8">
+                        Intro:
+                        <br>
+                        <textarea rows="4" ng-model="currentTrip.intro" class="form-control" required="true"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <input type="radio" ng-model="currentTrip.type" value="TREK">Trek
+                        <br>
+                        <input type="radio" ng-model="currentTrip.type" value="BLOG">Blog
+                    </div>
+                </div>
+                <br> Description:
+                <br>
+                <div text-angular="text-angular" name="htmlcontent" ng-model="currentTrip.description   " ta-disabled='disabled'>
+                </div>
+
+                <!--            <textarea rows="10" cols="50" ng-model="currentTrip.description" class="form-control"></textarea>-->
+                <br>
+                <br>
+            </div>
             <br>
             <br>
         </div>
-        <br>
-        <br>
-    </div>
-    <div class="col-md-5" ng-show="editable">
+        <!--
+<div class="col-md-5" ng-show="editable">
 
-        Preview:
-        <br>
-        <h4>{{currentTrip.title}}
+    Preview:
+    <br>
+    <h4>{{currentTrip.title}}
         </h4>
-        <br>
-        <div ta-bind="text" ng-model="currentTrip.description" ta-readonly='disabled'></div>
+    <br>
+    <div ta-bind="text" ng-model="currentTrip.description" ta-readonly='disabled'></div>
+</div>
+-->
     </div>
 </div>

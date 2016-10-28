@@ -5,7 +5,8 @@ var mongoose = require('mongoose'),
         'name': {
             type: String,
             required: true
-        }
+        },
+        'tag': String
     });
 
 module.exports = mongoose.model('TblImage', imageschema);

@@ -1,0 +1,33 @@
+<div class="row" style="font-family: 'Architects Daughter', cursive;font-size:15px;">
+    <br>
+    <div class="col-md-2"></div>
+    <div class="col-md-6">
+        <div ng-repeat="trek in treks">
+            <div class="well well-lg" style="background-color:lavender;color:#777 ">
+                <a href="/specificblogs/{{trek._id}}">
+                    <h3><b>{{trek.title}}</b></h3>
+                    <br>
+                    <!--<div style="background-image:url('../assets/{{blog.title}}.jpg'); max-height:100%;max-width:100%;background-size: cover;"></div>-->
+                    <img src="/assets/{{trek.title}}.jpg" class="img-thumbnail" alt="Image not found">
+                    <br> {{trek.intro | limitTo:300}}.......
+                </a>
+            </div>
+            <br>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <br>
+        <b>featured Trek</b>
+        <br>
+        <br>
+        <div ng-repeat="title in ['Andharban','Harishchandragad']">
+            <div class="well">
+                <h4><b>{{title}}</b></h4>
+                <p>
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,..............
+                </p>
+            </div>
+            <br>
+        </div>
+    </div>
+</div>

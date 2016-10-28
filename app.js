@@ -14,6 +14,9 @@ var express = require('express'),
 
 app.use(bodyparser.json());
 app.use(express.static('public'));
+
+
+
 //app.use(auth);
 app.use('/api/user', userroute);
 app.use('/api/chat', chatroute);
@@ -26,7 +29,8 @@ app.get('*', function (req, res) {
     res.sendFile(__dirname + '/public/index.html');
 });
 
-http.listen(3000, function () {
+
+http.listen(80, function () {
     console.log('Express app started')
 });
 

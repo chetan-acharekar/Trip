@@ -1,36 +1,84 @@
-<div class="row" ng-show="!isLoggedIn">
-    You need to login first!!
-</div>
+<div class="container">
+    <div class="row" ng-show="!isLoggedIn">
+        You need to login first!!
+    </div>
 
-<div class="app row">
-
-    <div class="col-md-6">
+    <div class="app row">
         <div ng-repeat="alertupdate in alerts">
             <div class={{alertupdate.class}}>
                 <a href="#" class="close" ng-click="closeAlert($index)" aria-label="close">&times;</a> {{alertupdate.msg}}
             </div>
         </div>
+
+        <br>
+        <br>
         <form>
-            <button class="btn btn-primary" ng-click="createTrip()">Create</button>
+            <button class="btn btn-primary" ng-click="createTripWithImage()">Create</button>
             <br>
-            <br>Title:
-            <br>
-            <input type="text" ng-model="title" class="form-control" required="true">
-            <br> Description:
-            <br>
-            <div text-angular="text-angular" name="htmlcontent" ng-model="htmlcontent" ta-disabled='disabled'>
+            <div class="row">
+                <div class="col-md-4">
+                    <input type="radio" ng-model="blogType" value="TREK">Trek
+                    <br>
+                    <input type="radio" ng-model="blogType" value="BLOG">Blog
+                </div>
+                <!--
+ <div class="col-md-2">
+    Select Tag for images
+    <select ng-model="tag" ng-options="x for x in tags">
+    </select>
+</div>
+-->
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <br>
+                    <br>Title:
+                    <br>
+                    <input type="text" ng-model="title" class="form-control" required="true">
+                </div>
             </div>
             <br>
+            <br>
+            <div class="row">
+                <div class="col-md-8">
+                    Intro:
+                    <br>
+                    <textarea rows="4" ng-model="intro" class="form-control" required="true"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <br>
+                    <br>TitleImage:
+                    <br>
+                    <input type="file" ng-model="titleImage" ngf-select class="form-control" required="true">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <br> Description:
+                    <br>
+                    <div text-angular="text-angular" name="htmlcontent" ng-model="htmlcontent" ta-disabled='disabled'>
+                    </div>
+                </div>
+            </div>
+            <br>
+
         </form>
-    </div>
-    <br>
-    <div class="col-md-6">
-        Preview
+
         <br>
-        <h2>{{title}}</h2>
-        <div ta-bind="text" ng-model="htmlcontent" ta-readonly='disabled'></div>
+        <!--
+<div class="col-md-6">
+    Preview
+    <br>
+    <h2>{{title}}</h2>
+    <div ta-bind="text" ng-model="htmlcontent" ta-readonly='disabled'></div>
+</div>
+-->
     </div>
 </div>
+
+
 <!--
 <div class="row" ng-show="!isLoggedIn">
     You need to login first!!

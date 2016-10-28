@@ -10,9 +10,11 @@ app.controller('loginController', function ($scope, $location, httpservice, conf
             if (!response.data.IsError) {
                 sharedservice.setuserlogin(response.data.user.username);
                 if (response.data.user.IsAdmin) {
+                    $scope.$emit('adminLoggedin');
                     $location.path('/menu');
                 } else {
-                    $location.path('/chat');
+                    $scope.$emit('userLoggedin');
+                    $location.path('/blogs');
                 }
                 //$scope.$apply();
             } else {

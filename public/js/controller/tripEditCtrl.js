@@ -1,4 +1,4 @@
-app.controller('tripEditController', function ($scope, $timeout, $window, sharedservice, textAngularManager, configservice, httpservice) {
+app.controller('tripEditController', function ($scope, $timeout, $window, sharedservice, textAngularManager, $location, configservice, httpservice) {
     $scope.enableForm = false;
     $scope.enableChat = false;
     $scope.isLoggedIn = sharedservice.isLoggedIn();
@@ -7,7 +7,15 @@ app.controller('tripEditController', function ($scope, $timeout, $window, shared
     $scope.picFile = null;
     $scope.currentTrip = null;
 
-
+    $scope.createNew = function () {
+        $location.path('/tripadd');
+    };
+    $scope.edit = function () {
+        $location.path('/tripedit');
+    };
+    $scope.uploadImages = function () {
+        $location.path('/upload');
+    };
     $scope.addAlert = function (alertData) {
         $scope.alerts.push(alertData);
     };
@@ -51,7 +59,8 @@ app.controller('tripEditController', function ($scope, $timeout, $window, shared
                 'updatedBy': sharedservice.username(),
                 'lastUpdatedon': new Date(),
                 'participants': [],
-                'description': $scope.currentTrip.description
+                'description': $scope.currentTrip.description,
+                'type': $scope.currentTrip.type
             },
             tripURL = configservice.tripURL + '/' + $scope.currentTrip._id;
         httpservice.put(tripURL, updatedTrip)

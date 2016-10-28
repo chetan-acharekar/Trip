@@ -2,6 +2,19 @@
 
 var express = require('express'),
     router = express.Router(),
+    multer = require('multer'),
+    storage = multer.diskStorage({ //multers disk storage settings
+        destination: function (req, file, cb) {
+            cb(null, './public/assets')
+        },
+        filename: function (req, file, cb) {
+            debugger;
+            cb(null, req.body.title + '.' + file.originalname.split('.')[file.originalname.split('.').length - 1])
+        }
+    }),
+    upload = multer({ //multer settings
+        storage: storage
+    }),
     tripdbCtrl = require('../db/controller/index.js').trip;
 
 
@@ -28,14 +41,17 @@ router.get('/', function (req, res) {
             res.json(response[0]);
         }
     });
-}).post('/', function (req, res) {
+}).post('/', upload.any(), function (req, res) {
     var trip = {
         'title': req.body.title,
         'createdBy': req.body.createdBy,
         'createdOn': new Date(),
         'participants': [],
-        'description': req.body.description
+        'description': req.body.description,
+        'intro': req.body.intro,
+        'type': req.body.type
     };
+    debugger;
     tripdbCtrl.save(trip, function (error, response) {
         if (error) {
             res.send({

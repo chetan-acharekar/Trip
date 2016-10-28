@@ -1,0 +1,63 @@
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-8 well">
+            <h3>{{blog.title}}</h3>
+            <!--
+<carousel interval="myInterval">
+    <slide ng-repeat="slide in slides" active="slide.active">
+        <img ng-src="{{slide.image}}" height="200" width="200">
+        <div class="carousel-caption">
+            <h4>Slide {{$index+1}}</h4>
+        </div>
+    </slide>
+</carousel>
+-->
+            <br> {{blog.intro}}
+            <br>
+            <div ta-bind="text" ng-model="blog.description" ta-readonly='disabled'></div>
+            <br>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-3">
+
+
+            <div class="row well" style="border:1px solid black;height:550px; overflow:auto;" id="autoscroll">
+                <div ng-repeat="chat in chats">
+                    <div ng-if="chat.creator == currentuser" class="bubble">
+                        <u>{{chat.creator}}:</u>
+                        <br> {{chat.message}}
+                    </div>
+                    <div ng-if="!(chat.creator == currentuser)" class="bubble bubble-alt green">
+                        <u>{{chat.creator}}:</u>
+                        <br> {{chat.message}}
+                    </div>
+                </div>
+                <br>
+                <br>
+                <br>
+                <div class="row" style="position: absolute;bottom: 5%;">
+                    <div ng-show="isLoggedIn">
+                        <div class="col-md-10">
+                            <input type="text" ng-model="chatMessage" class="form-control">
+                        </div>
+                        <div class="col-md-1">
+                            <span class="glyphicon glyphicon-send" ng-click="createChat()" ng-show="isLoggedIn">
+                    </span>
+                        </div>
+                    </div>
+                    <div ng-show="!isLoggedIn" style="float:left">
+                        You are not logged in..
+                    </div>
+                </div>
+                <br>
+
+            </div>
+            <!--
+<div class="row well" style="border:1px solid black;">
+
+</div>
+-->
+        </div>
+    </div>
+</div>

@@ -47,6 +47,7 @@ router.get('/', function (req, res) {
         images.push({
             createdBy: req.body.createdBy,
             name: req.files[0].filename,
+            'tag': req.body.tag,
             createdOn: new Date()
         });
     };
@@ -62,6 +63,18 @@ router.get('/', function (req, res) {
             });
         }
     })
+}).get('/distinct/tag', function (req, res) {
+    var field = 'tag';
+    imagedbCtrl.distinct(field, function (error, response) {
 
+        debugger;
+        if (error) {
+            res.send({
+                'error': error
+            }).status(500);
+        } else {
+            res.json(response);
+        }
+    });
 })
 module.exports = router;
