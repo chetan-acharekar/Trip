@@ -2,11 +2,11 @@
     overflow: auto;
 }
 
-.parallax3 {
+.parallax1 {
     /* The image used */
-    background-image: url("../assets/image2.jpg");
+    background-image: url("../assets/image1.jpg");
     /* Set a specific height */
-    min-height: 550px;
+    min-height: 800px;
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
     background-position: center;
@@ -26,11 +26,11 @@
     background-size: cover;
 }
 
-.parallax1 {
+.parallax3 {
     /* The image used */
-    background-image: url("../assets/image1.jpg");
+    background-image: url("../assets/image2.jpg");
     /* Set a specific height */
-    min-height: 800px;
+    min-height: 550px;
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
     background-position: center;
