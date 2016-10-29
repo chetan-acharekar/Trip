@@ -46,7 +46,7 @@ router.get('/', function (req, res) {
     for (var i = 0; i < req.files.length; i++) {
         images.push({
             createdBy: req.body.createdBy,
-            name: req.files[0].filename,
+            name: req.files[i].filename,
             'tag': req.body.tag,
             createdOn: new Date()
         });
