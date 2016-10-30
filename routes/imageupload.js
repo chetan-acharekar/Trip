@@ -9,7 +9,8 @@ var express = require('express'),
         },
         filename: function (req, file, cb) {
             var datetimestamp = Date.now();
-            cb(null, datetimestamp + '.' + file.originalname.split('.')[file.originalname.split('.').length - 1])
+            cb(null,file.originalname);
+            //cb(null, datetimestamp + '.' + file.originalname.split('.')[file.originalname.split('.').length - 1])
         }
     }),
     upload = multer({ //multer settings
