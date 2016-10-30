@@ -118,6 +118,7 @@
 
 <body ng-app="trekApp" ng-controller="mainController">
     <!-- HEADER -->
+    <div style="background-image:url('../assets/background.jpg'); background-size:cover;">
     <nav class="navbar navbar-default">
         <div class="navbar-header">
             <a class="navbar-brand" href="/">Home</a>
@@ -147,7 +148,8 @@
 
 
     <!-- ANGULAR DYNAMIC CONTENT -->
-    <div ng-view style="overflow:hidden;"> </div>
+    <div ng-view style="overflow:hidden;" > </div>
+  </div>
 </body>
 
 </html>
