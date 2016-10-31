@@ -43,7 +43,7 @@ router.get('/', function (req, res) {
         } else {
             res.json({
                 "IsError": false,
-                "Message": "User created successfully!"
+                "Message": "Chat created successfully!"
             });
         }
     })

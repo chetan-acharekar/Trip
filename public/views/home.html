@@ -4,10 +4,10 @@
     </div>
 </div>
 
-<div style="color: #777;background-color:white;text-align:center;padding:50px 80px;text-align: justify;">
-    <h3 style="text-align:center;font-family: 'Architects Daughter';font-size:50px">
+<div style="background-color:white; text-align:center;padding:50px 80px;text-align: justify; ">
+    <h3 style="text-align:center;font-family: 'Architects Daughter';font-size:50px ">
     Hello trekkers, Welcome home :) </h3>
-    <div style="font-family: 'Architects Daughter', cursive;font-size:18px">
+    <div style="font-family: 'Architects Daughter', cursive;font-size:18px ">
         <br> Trekking toad is a window to number of forest trails, treks, mountains, lake sides and what not! Are you a newbie trekker. worry not. We have whole lot of treks documented with ranging variations in endurance. Get route, maps, food and accommodation info within minutes.
         <br>
         <br> Are you experienced nerd!! Well share your thoughts and info. Let more and more people see the new places. Help them follow your trails.
@@ -16,21 +16,25 @@
         <br> Start digging! Explore the unexplored!!
     </div>
 </div>
-<div class="parallax1"></div>
+<div class="parallax1 "></div>
 
 
-<div style="background-color:white;padding:50px 80px;height=500px;font-family: 'Architects Daughter';">
-    <h3 style="text-align:center;"><a href="/blogs">Blogs</a></h3>
+<div style="padding:50px 80px;height=500px;font-family: 'Architects Daughter';background-image:url( '/assets/background.jpg') ">
+    <h3 style="text-align:center; "><a href="/blogs ">Blogs</a></h3>
     <br>
     <br>
-    <div class="row">
-        <div ng-repeat="blog in blogs| limitTo:-3">
-            <div class="col-sm-3 well" style="background-color:lavender;">
-                <a href="/specificblogs/{{blog._id}}">
-                    <div style="text-align:center;color:#777;font-size:30px; ">{{blog.title}}</div>
-                    <br>
-                    <p style="text-align:justify;color:#777; ">{{blog.intro | limitTo:300}}....</p>
-                </a>
+    <div class="row ">
+        <div ng-repeat="blog in blogs| limitTo:-3 ">
+            <!--            <div class="col-sm-3 well " style="background-color:lavender; " >-->
+            <div class="col-md-3 ">
+                <div class="thumbnail " style="background-color:lavender; ">
+                    <a href="/specificblogs/{{blog._id}} ">
+                        <img src="/uploads/{{blog.title}}.jpg " class="img-thumbnail ">
+                        <div style="text-align:center;color:#777;font-size:30px; ">{{blog.title}}</div>
+                        <br>
+                        <p style="text-align:justify;color:#777; ">{{blog.intro | limitTo:300}}....</p>
+                    </a>
+                </div>
             </div>
             <div class="col-sm-1 "></div>
         </div>
@@ -40,23 +44,25 @@
 <div class="parallax2 "> </div>
 
 
-<div style="color: #777;background-color:white;text-align:center;padding:50px 80px;text-align: justify;height=500px;width=600px;font-family: 'Architects Daughter'; ">
-    <h3 style="text-align:center; "> <a href="/treks">Upcoming Treks</a></h3>
+<div style="background-image:url('/assets/background.jpg'); text-align:center;padding:50px 80px;text-align: justify;height=500px;width=600px;font-family: 'Architects Daughter'; ">
+    <h3 style="text-align:center; "> <a href="/treks ">Upcoming Treks</a></h3>
     <br>
     <br>
     <div class="row ">
         <div ng-repeat="trek in treks| limitTo:-3 ">
-            <div class="col-sm-3 well" style="background-color:lavender">
+            <!--            <div class="col-sm-3 well " style="background-color:lavender ">-->
+            <div class="col-md-3 ">
+                <div class="thumbnail " style="background-color:lavender; ">
+                    <a href="/specificblogs/{{trek._id}} ">
+                        <img src="/uploads/{{trek.title}}.jpg " class="img-thumbnail ">
+                        <div style="text-align:center;color:#777 ">
+                            <h3>{{trek.title}}</h3>
+                            <br>
+                        </div>
 
-                <a href="/specificblogs/{{trek._id}}">
-
-                    <div style="text-align:center;color:#777 ">
-                        <h3>{{trek.title}}</h3>
-                        <br>
-                    </div>
-
-                    <p style="color:#777 ">{{trek.intro | limitTo:300}}....</p>
-                </a>
+                        <p style="color:#777 ">{{trek.intro | limitTo:300}}....</p>
+                    </a>
+                </div>
             </div>
             <div class="col-sm-1 "></div>
         </div>

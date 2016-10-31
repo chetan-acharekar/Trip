@@ -1,4 +1,4 @@
-app.controller('tripEditController', function ($scope, $timeout, $window, sharedservice, textAngularManager, $location, configservice, httpservice) {
+app.controller('tripEditController', function ($scope, $timeout, $window, sharedservice, textAngularManager, $location, configservice, httpservice, Upload) {
     $scope.enableForm = false;
     $scope.enableChat = false;
     $scope.isLoggedIn = sharedservice.isLoggedIn();
@@ -68,7 +68,7 @@ app.controller('tripEditController', function ($scope, $timeout, $window, shared
                 $scope.addAlert({
                     msg: 'Trip Updated',
                     class: 'alert alert-success'
-                })
+                });
 
             }, function (error) {
                 $scope.addAlert({
@@ -76,6 +76,29 @@ app.controller('tripEditController', function ($scope, $timeout, $window, shared
                     class: 'alert alert-danger'
                 })
             });
+    };
+
+    $scope.uploadGaleeryImages = function () {
+        Upload.upload({
+            url: configservice.uploadImage,
+            data: {
+                'tag': $scope.currentTrip._id
+            },
+            file: $scope.GalleryFiles
+        }).then(function (response) {
+            $scope.addAlert({
+                msg: 'Pics uploaded',
+                class: 'alert alert-success'
+            });
+            $scope.GalleryFiles = null;
+
+        }, function (error) {
+            $scope.addAlert({
+                msg: 'Pics upload failed',
+                class: 'alert alert-danger'
+            })
+
+        });
     };
 
 

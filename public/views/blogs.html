@@ -6,21 +6,22 @@
             <div linkedin class="linkedinShare" data-url='http://trekkingtoad.com/blogs' data-title='Linkedin Share' data-summary="testing Linkedin Share" data-shares='linkedinshares'>Share</div>
             <div gplus class="g-plus" data-size="tall" data-annotation="bubble" data-href='http://trekkingtoad.com/blogs' data-action='share'></div>
         </div>
-        <div class="col-md-8" style="font-family: 'Architects Daughter', cursive;font-size:15px;">
+        <div class="col-md-6" style="font-family: 'Architects Daughter', cursive;font-size:15px;">
             <div ng-repeat="blog in blogs">
                 <div class="well well-lg" style="background-color:lavender;color:#777 ">
                     <a href="/specificblogs/{{blog._id}}">
                         <h3><b>{{blog.title}}</b></h3>
                         <br>
                         <!--<div style="background-image:url('../assets/{{blog.title}}.jpg'); max-height:100%;max-width:100%;background-size: cover;"></div>-->
-                        <img src="/assets/{{blog.title}}.jpg" class="img-thumbnail" alt="Image not found">
+                        <img src="/uploads/{{blog.title}}.jpg" class="img-thumbnail" alt="Image not found">
                         <br> {{blog.intro | limitTo:300}}.......
                     </a>
                 </div>
                 <br>
             </div>
         </div>
-        <div class="col-md-2" style="font-family: 'Architects Daughter', cursive;font-size:15px;">
+        <div class="col-md-1"></div>
+        <div class="col-md-3" style="font-family: 'Architects Daughter', cursive;font-size:15px;">
             <br>
             <b>featured Blog</b>
             <br>

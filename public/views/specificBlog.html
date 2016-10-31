@@ -10,9 +10,9 @@
             <div gplus class="g-plus" data-size="tall" data-annotation="bubble" data-href='http://trekkingtoad.com/specificblogs/{{blog._id}}' data-action='share'></div>
         </div>
     </div>
-    <div class="row" style="font-family: 'Architects Daughter'">
-        <div class="col-md-8 well">
-            <h3>{{blog.title}}</h3>
+    <div class="row" style="font-family: 'Architects Daughter';">
+        <div class="col-md-8 well" style="font-size:20px;overflow-y:auto">
+            <h2>{{blog.title}}</h2>
             <!--
 <carousel interval="myInterval">
     <slide ng-repeat="slide in slides" active="slide.active">
@@ -30,8 +30,13 @@
         </div>
         <div class="col-md-1"></div>
         <div class="col-md-3">
-
-            <div class="row well" style="border:1px solid black;height:450px; overflow:auto;" id="autoscroll">
+            <div class="thumbnail" ng-show="galleryPicsExists">
+                <a ng-click="openLightboxModal(0)">
+                    <img src="{{images[0]}}">
+                    <h3 style="text-align:center">Gallery</h3>
+                </a>
+            </div>
+            <div class="row well" style="height:450px; overflow:auto; font-size:15px;" id="autoscroll">
                 <div ng-repeat="chat in chats">
                     <div ng-if="chat.creator == currentuser" class="bubble">
                         <u>{{chat.creator}}:</u>
@@ -52,7 +57,7 @@
                 </div>
                 <br>
             </div>
-            <div ng-show="isLoggedIn" class="row well" style="border:1px solid black;">
+            <div ng-show="isLoggedIn" class="row well" style="border:1px; solid black;">
                 <div class="col-md-10">
                     <input type="text" ng-model="chatMessage" class="form-control">
                 </div>
@@ -61,6 +66,10 @@
                     </span>
                 </div>
             </div>
+
+
+
+
         </div>
     </div>
 </div>

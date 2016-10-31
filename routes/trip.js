@@ -5,7 +5,7 @@ var express = require('express'),
     multer = require('multer'),
     storage = multer.diskStorage({ //multers disk storage settings
         destination: function (req, file, cb) {
-            cb(null, './public/assets')
+            cb(null, './public/uploads')
         },
         filename: function (req, file, cb) {
             debugger;

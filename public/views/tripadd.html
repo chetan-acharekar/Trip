@@ -1,73 +1,89 @@
 <div class="container">
+    <br>
     <div class="row" ng-show="!isLoggedIn">
         You need to login first!!
     </div>
-
     <div class="app row">
-        <div ng-repeat="alertupdate in alerts">
-            <div class={{alertupdate.class}}>
-                <a href="#" class="close" ng-click="closeAlert($index)" aria-label="close">&times;</a> {{alertupdate.msg}}
+        <div class="col-md-8">
+            <div ng-repeat="alertupdate in alerts">
+                <div class={{alertupdate.class}}>
+                    <a href="#" class="close" ng-click="closeAlert($index)" aria-label="close">&times;</a> {{alertupdate.msg}}
+                </div>
             </div>
-        </div>
 
-        <br>
-        <br>
-        <form>
-            <button class="btn btn-primary" ng-click="createTripWithImage()">Create</button>
             <br>
-            <div class="row">
-                <div class="col-md-4">
-                    <input type="radio" ng-model="blogType" value="TREK">Trek
-                    <br>
-                    <input type="radio" ng-model="blogType" value="BLOG">Blog
+            <br>
+            <form ng-submit="createTripWithImage()">
+                <div class="row">
+                    <input value="create" class="btn btn-success" type="submit" />
                 </div>
-                <!--
- <div class="col-md-2">
-    Select Tag for images
-    <select ng-model="tag" ng-options="x for x in tags">
-    </select>
-</div>
--->
-            </div>
-            <div class="row">
-                <div class="col-md-8">
+                <br>
+
+                <div class="row">
+                    <h4>
+            <span class="label label-primary">
+                Choose Files for gallery:
+            </span>
+            </h4>
                     <br>
-                    <br>Title:
+                    <input type="file" ngf-select ng-model="GalleryFiles" ngf-multiple="true">
                     <br>
+                </div>
+                <div class="row">
+                    <h4>
+            <span class="label label-primary">
+                Writing blog or planning trek ?
+            </span>
+            </h4>
+                    <div class="col-md-4">
+                        <input type="radio" name='TYPE' ng-model="blogType" value="TREK" required>Trek
+                        <br>
+                        <input type="radio" name='TYPE' ng-model="blogType" value="BLOG" required>Blog
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <h4>
+            <span class="label label-primary">
+                Title:</span></h4>
+
                     <input type="text" ng-model="title" class="form-control" required="true">
+
                 </div>
-            </div>
-            <br>
-            <br>
-            <div class="row">
-                <div class="col-md-8">
-                    Intro:
+
+                <div class="row">
+                    <h4>
+            <span class="label label-primary">
+                Intro:</span></h4>
                     <br>
                     <textarea rows="4" ng-model="intro" class="form-control" required="true"></textarea>
+
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-8">
+                <div class="row">
+
                     <br>
-                    <br>TitleImage:
+                    <h4>
+                    <span class="label label-primary">TitleImage:</span></h4>
                     <br>
                     <input type="file" ng-model="titleImage" ngf-select class="form-control" required="true">
+
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-8">
-                    <br> Description:
+                <div class="row">
+
+                    <br>
+                    <h4>
+                    <span class="label label-primary"> Description:</span></h4>
                     <br>
                     <div text-angular="text-angular" name="htmlcontent" ng-model="htmlcontent" ta-disabled='disabled'>
                     </div>
                 </div>
-            </div>
+                <br>
+
+            </form>
+
             <br>
-
-        </form>
-
-        <br>
-        <!--
+            <!--
 <div class="col-md-6">
     Preview
     <br>
@@ -75,6 +91,10 @@
     <div ta-bind="text" ng-model="htmlcontent" ta-readonly='disabled'></div>
 </div>
 -->
+        </div>
+        <div class="col">
+
+        </div>
     </div>
 </div>
 

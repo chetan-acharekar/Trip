@@ -3,14 +3,15 @@
 var express = require('express'),
     router = express.Router(),
     multer = require('multer'),
+    config = require('../config.js'),
     storage = multer.diskStorage({ //multers disk storage settings
         destination: function (req, file, cb) {
             cb(null, './public/uploads')
         },
         filename: function (req, file, cb) {
             var datetimestamp = Date.now();
-            cb(null,file.originalname);
-            //cb(null, datetimestamp + '.' + file.originalname.split('.')[file.originalname.split('.').length - 1])
+            //cb(null,file.originalname);
+            cb(null, datetimestamp + '.' + file.originalname.split('.')[file.originalname.split('.').length - 1])
         }
     }),
     upload = multer({ //multer settings
@@ -64,17 +65,24 @@ router.get('/', function (req, res) {
             });
         }
     })
-}).get('/distinct/tag', function (req, res) {
-    var field = 'tag';
-    imagedbCtrl.distinct(field, function (error, response) {
-
+}).get('/tag/:tagid', function (req, res) {
+    debugger;
+    var query = {
+        'tag': req.params.tagid
+    };
+    imagedbCtrl.find(query, function (error, response) {
         debugger;
+        var result = {
+            images: response,
+            path: config.filepath
+        };
+        response.path = config.filepath;
         if (error) {
             res.send({
                 'error': error
             }).status(500);
         } else {
-            res.json(response);
+            res.json(result);
         }
     });
 })

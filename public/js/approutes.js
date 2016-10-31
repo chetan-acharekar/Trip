@@ -1,6 +1,7 @@
 // public/js/appRoutes.js
-app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
+app.config(['$routeProvider', '$locationProvider', 'LightboxProvider', function ($routeProvider, $locationProvider, LightboxProvider) {
 
+    LightboxProvider.fullScreenMode = true;
     $routeProvider
         .when('/', {
             templateUrl: 'views/home.html',

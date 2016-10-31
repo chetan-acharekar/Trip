@@ -3,6 +3,7 @@ app.controller('tripAddController', function ($scope, sharedservice, textAngular
     $scope.trips = [];
     $scope.alerts = [];
     $scope.currentTrip = null;
+    var galleryFiles = null;
     $scope.tags = [];
     $scope.addAlert = function (alertData) {
         $scope.alerts.push(alertData);
@@ -20,14 +21,15 @@ app.controller('tripAddController', function ($scope, sharedservice, textAngular
     $scope.uploadImages = function () {
         $location.path('/upload');
     };
-
-    httpservice.get(configservice.allImageTags).then(function (response) {
-        $scope.tags = response.data;
-    }, function (error) {
-
-    });
+//
+//    httpservice.get(configservice.allImageTags).then(function (response) {
+//        $scope.tags = response.data;
+//    }, function (error) {
+//
+//    });
 
     $scope.createTripWithImage = function () {
+        galleryFiles = $scope.GalleryFiles;
         Upload.upload({
             url: configservice.tripURL,
             data: {
@@ -39,8 +41,12 @@ app.controller('tripAddController', function ($scope, sharedservice, textAngular
             },
             file: $scope.titleImage
         }).then(function (response) {
+            if (galleryFiles.length > 0) {
+                uploadGalleryImages(galleryFiles, response.data.Result._id);
+            }
             $scope.title = "";
             $scope.htmlcontent = "";
+            $scope.intro = "";
             $scope.addAlert({
                 msg: 'Trip Added',
                 class: 'alert alert-success'
@@ -51,5 +57,47 @@ app.controller('tripAddController', function ($scope, sharedservice, textAngular
                 class: 'alert alert-danger'
             })
         })
+    }
+
+
+
+
+    function uploadGalleryImages(files, inputTag) {
+        Upload.upload({
+            url: configservice.uploadImage,
+            data: {
+                'tag': inputTag
+            },
+            file: files
+        }).then(function (response) {
+
+        }, function (error) {
+
+        });
+    }
+
+    $scope.uploadPic = function (files) {
+        Upload.upload({
+            url: configservice.uploadImage,
+            data: {
+                'createdBy': sharedservice.username()
+            },
+            file: files
+        }).then(function (response) {
+            $scope.picFiles = null;
+            $scope.addAlert({
+                msg: 'Image Uploaded',
+                class: 'alert alert-success'
+            })
+        }, function (error) {
+            $scope.addAlert({
+                msg: 'Image Upload Failed ',
+                class: 'alert alert-danger'
+
+            })
+
+        }, function (evt) {
+
+        });
     }
 });

@@ -10,13 +10,30 @@
     <script src="libs/angular/angular.min.js"></script>
     <script src="libs/angular-route/angular-route.min.js"></script>
 
+    <!--    Gallery viewer-->
+
+    <link href="libs/angular-bootstrap/ui-bootstrap-csp.css">
+    <link href="libs/angular-bootstrap/ui-bootstrap-csp.css">
+    <script src="libs/angular-bootstrap/ui-bootstrap.js"></script>
+    <script src="libs/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+
+    <!--    loading bar-->
+    <script type="text/javascript" src="libs/angular-loading-bar/build/loading-bar.min.js"></script>
+    <link rel="stylesheet" href="libs/angular-loading-bar/build/loading-bar.min.css">
+
+
     <link rel="icon" href="assets/frog.png">
     <!--    <script src="libs/angular-bootstrap/ui-bootstrap.js"></script>-->
 
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="libs/bootstrap/dist/css/bootstrap.min.css">
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.min.js"></script>
-    <link href="libs/angular-carousel/dist/angular-carousel.css" rel="stylesheet" type="text/css" />
+    <script src="libs/jquery/dist/jquery.min.js"></script>
+    <script src="libs/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!--
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.min.js"></script>
+<link href="libs/angular-carousel/dist/angular-carousel.css" rel="stylesheet" type="text/css" />
+-->
 
 
 
@@ -35,15 +52,16 @@
 
 
 
-
-
-
+    <!--    Gallery viewer-->
+    <link rel="stylesheet" href="libs/angular-bootstrap-lightbox/dist/angular-bootstrap-lightbox.min.css">
+    <script src="libs/angular-bootstrap-lightbox/dist/angular-bootstrap-lightbox.js"></script>
 
     <!--    google login-->
     <!--
-   <script src="https://apis.google.com/js/platform.js" async defer></script>
-<meta name="google-signin-client_id" content="533995037880-0tm87rmjrvshj5a10jv460t4d8uktekf.apps.googleusercontent.com">
--->
+        < script src = "https://apis.google.com/js/platform.js"
+        async defer >
+    </script>
+    <meta name="google-signin-client_id" content="533995037880-0tm87rmjrvshj5a10jv460t4d8uktekf.apps.googleusercontent.com"> -->
 
     <!--    socket-->
     <!--    <script src="libs/socket.io-client/socket.io.js"></script>-->
@@ -69,6 +87,9 @@
 <script src="libs/angular-touch/angular-touch.js"></script>
 <script src="libs/angular-carousel/dist/angular-carousel.js"></script>
 -->
+
+
+
 
 
     <link rel="stylesheet" href="libs/angular-socialshare/angular-socialshare.min.css">
@@ -119,37 +140,47 @@
 <body ng-app="trekApp" ng-controller="mainController">
     <!-- HEADER -->
     <div style="background-image:url('../assets/background.jpg'); background-size:cover;">
-    <nav class="navbar navbar-default">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="/">Home</a>
+        <div>
+            <nav class="navbar navbar-default" style="margin-bottom:0px">
+
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/">Home</a>
+                </div>
+
+                <!-- LINK TO OUR PAGES. ANGULAR HANDLES THE ROUTING HERE -->
+                <ul class="nav navbar-nav">
+
+                    <li>
+                        <a href="/blogs">Blogs</a>
+                    </li>
+                    <li>
+                        <a href="/treks">Treks</a>
+                    </li>
+                    <li>
+                        <a href="/login ">
+                            <div ng-show="isLoggedIn ">
+                                Logged in as {{username}}, Logout
+                            </div>
+                            <div ng-show="!isLoggedIn ">Login</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/menu " ng-show="isAdmin ">ADMIN MENU</a>
+                    </li>
+                </ul>
+                <!--            <div class="g-signin2 " data-onsuccess="onSignIn "></div>-->
         </div>
-
-        <!-- LINK TO OUR PAGES. ANGULAR HANDLES THE ROUTING HERE -->
-        <ul class="nav navbar-nav">
-
-            <li>
-                <a href="/blogs">Blogs</a>
-            </li>
-            <li>
-                <a href="/treks">Treks</a>
-            </li>
-            <li>
-                <a href="/login">
-                    <div ng-show="isLoggedIn">Logged in as {{username}}, Logout </div>
-                    <div ng-show="!isLoggedIn">Login</div>
-                </a>
-            </li>
-            <li>
-                <a href="/menu" ng-show="isAdmin">ADMIN MENU</a>
-            </li>
-        </ul>
-        <!--            <div class="g-signin2" data-onsuccess="onSignIn"></div>-->
-    </nav>
+        </nav>
 
 
-    <!-- ANGULAR DYNAMIC CONTENT -->
-    <div ng-view style="overflow:hidden;" > </div>
-  </div>
+
+
+
+        <!-- ANGULAR DYNAMIC CONTENT -->
+
+        <div ng-view style="overflow:hidden;"> </div>
+
+    </div>
 </body>
 
 </html>

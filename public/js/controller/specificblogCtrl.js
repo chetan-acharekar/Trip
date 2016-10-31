@@ -1,29 +1,23 @@
-app.controller('specificBlogController', function ($scope, httpservice, $timeout, configservice, $routeParams, allEventService, $timeout, textAngularManager, sharedservice, socket) {
+app.controller('specificBlogController', function ($scope, httpservice, $timeout, configservice, $routeParams, allEventService, $timeout, textAngularManager, sharedservice, socket, Lightbox) {
     //$scope.param1 = $routeParams.param1;
     $scope.blogid = $routeParams.param1;
     $scope.blog = {};
     $scope.chats = [];
     $scope.currentuser = sharedservice.username();
     $scope.isLoggedIn = sharedservice.isLoggedIn();
+    $scope.galleryPicsExists = false;
     allEventService.getSpecificBlog($scope.blogid).then(function (response) {
         $scope.blog = response.data;
     }, function (error) {
 
     });
 
-    $scope.myInterval = 3000;
-    $scope.slides = [
-        {
-            image: 'http://localhost/uploads/file-1475941567767.png'
-    },
-        {
-            image: 'http://localhost/uploads/1476187902003.jpg'
-    },
-        {
-            image: 'http://localhost/uploads/1476187902003.jpg'
+    $scope.images = [];
 
-    }
-  ];
+
+    $scope.openLightboxModal = function (index) {
+        var test = Lightbox.openModal($scope.images, index);
+    };
 
 
     socket.on('updatechatlist', function (data) {
@@ -62,7 +56,23 @@ app.controller('specificBlogController', function ($scope, httpservice, $timeout
             })
     };
 
+    function getGalleryImages() {
+        httpservice.get(configservice.allImagesForTag + $scope.blogid)
+            .then(function (response) {
+                if (response.data.images && response.data.images.length > 0) {
+                    var path = response.data.path;
+                    response.data.images.map(function (image) {
+                        $scope.images.push(path + image.name);
+                    });
+                    $scope.galleryPicsExists = true;
+                }
+
+            }, function (error) {
+
+            })
+    }
 
     $scope.getchats($scope.blogid);
+    getGalleryImages();
 
 });
