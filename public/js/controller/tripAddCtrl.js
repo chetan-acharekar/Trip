@@ -21,12 +21,12 @@ app.controller('tripAddController', function ($scope, sharedservice, textAngular
     $scope.uploadImages = function () {
         $location.path('/upload');
     };
-//
-//    httpservice.get(configservice.allImageTags).then(function (response) {
-//        $scope.tags = response.data;
-//    }, function (error) {
-//
-//    });
+    //
+    //    httpservice.get(configservice.allImageTags).then(function (response) {
+    //        $scope.tags = response.data;
+    //    }, function (error) {
+    //
+    //    });
 
     $scope.createTripWithImage = function () {
         galleryFiles = $scope.GalleryFiles;
@@ -41,7 +41,7 @@ app.controller('tripAddController', function ($scope, sharedservice, textAngular
             },
             file: $scope.titleImage
         }).then(function (response) {
-            if (galleryFiles.length > 0) {
+            if (galleryFiles && galleryFiles.length > 0) {
                 uploadGalleryImages(galleryFiles, response.data.Result._id);
             }
             $scope.title = "";
