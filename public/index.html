@@ -57,12 +57,26 @@
     <link rel="stylesheet" href="libs/angular-bootstrap-lightbox/dist/angular-bootstrap-lightbox.min.css">
     <script src="libs/angular-bootstrap-lightbox/dist/angular-bootstrap-lightbox.js"></script>
 
+
+
     <!--    google login-->
     <!--
-        < script src = "https://apis.google.com/js/platform.js"
-        async defer >
+    <meta name="google-signin-client_id" content="925731543706-p6h2ds1acqlg9dbrv8ib9v76ahbgnh28.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
     </script>
-    <meta name="google-signin-client_id" content="533995037880-0tm87rmjrvshj5a10jv460t4d8uktekf.apps.googleusercontent.com"> -->
+-->
+
+    <script src="libs/angularjs-social-login/angularjs-social-login.js"></script>
+
+
+    <!--
+<meta name="google-signin-scope" content="profile email">
+<meta name="google-signin-client_id" content="533995037880-3fkdm9psil30vn8m2ul23opg5pr2qha9.apps.googleusercontent.com">
+<script src="https://apis.google.com/js/platform.js" async defer></script>-->
+    <!--    <script src="libs/satellizer/dist/satellizer.js"></script>-->
+
+
+
 
     <!--    socket-->
     <!--    <script src="libs/socket.io-client/socket.io.js"></script>-->
@@ -140,11 +154,12 @@
 
 </head>
 
+
 <body ng-app="trekApp" ng-controller="mainController">
     <!-- HEADER -->
     <div style="background-image:url('../assets/background.jpg'); background-size:cover;">
         <div>
-            <nav class="navbar navbar-default" style="margin-bottom:0px">
+            <nav class="navbar navbar-default" style="margin-bottom:0px;">
 
                 <div class="navbar-header">
                     <a class="navbar-brand" href="/">Home</a>
@@ -171,19 +186,17 @@
                         <a href="/menu " ng-show="isAdmin ">ADMIN MENU</a>
                     </li>
                 </ul>
-                <!--            <div class="g-signin2 " data-onsuccess="onSignIn "></div>-->
         </div>
         </nav>
-
-
-
-
-
         <!-- ANGULAR DYNAMIC CONTENT -->
 
         <div ng-view style="overflow:hidden;"> </div>
 
     </div>
+
+
+
 </body>
+
 
 </html>

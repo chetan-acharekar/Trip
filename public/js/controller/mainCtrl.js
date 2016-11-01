@@ -1,6 +1,5 @@
 app.controller('mainController', function ($scope, sharedservice, httpservice, allEventService, configservice) {
 
-    $scope.tagline = 'Only if you have been in the deepest valley, can you ever know how magnificent it is to be on the highest mountain. — Richard M. Nixon';
     $scope.isLoggedIn = sharedservice.isLoggedIn();
     $scope.isAdmin = false;
     $scope.username = sharedservice.username();
@@ -10,11 +9,19 @@ app.controller('mainController', function ($scope, sharedservice, httpservice, a
     $scope.$on('userLoggedin', function () {
         $scope.username = sharedservice.username();
         $scope.isAdmin = false;
+        $scope.isLoggedIn = true;
     });
 
     $scope.$on('adminLoggedin', function () {
         $scope.username = sharedservice.username();
         $scope.isAdmin = true;
+        $scope.isLoggedIn = true;
+    });
+
+    $scope.$on('logout', function () {
+        $scope.isAdmin = false;
+        $scope.isLoggedIn = false;
+        $scope.username = null;
     });
 
     $scope.treks = [];

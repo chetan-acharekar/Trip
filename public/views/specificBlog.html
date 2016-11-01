@@ -41,53 +41,55 @@
                 </a>
             </div>
 
-            <div class="panel-heading top-bar row">
-                <div class="col-md-8 col-xs-8">
-                    <h3 class="panel-title"><span class="glyphicon glyphicon-comment"></span> Chat</h3>
+            <div style=" position: fixed;bottom:0;margin-right:50px;" class="row">
+                <div class="panel-heading top-bar row" ng-click="toggleChat()">
+                    <div class="col-md-8 col-xs-8">
+                        <h3 class="panel-title"><span class="glyphicon glyphicon-comment"></span> Chat</h3>
+                    </div>
+                    <div class="col-md-4 col-xs-4" style="text-align: right;">
+                        <span id="minim_chat_window" class="glyphicon glyphicon-minus icon_minim"></span>
+                        <!--    <a href="#"><span class="glyphicon glyphicon-remove icon_close" data-id="chat_window_1"></span></a>-->
+                    </div>
                 </div>
-                <!--
-                <div class="col-md-4 col-xs-4" style="text-align: right;">
-    <a href="#"><span id="minim_chat_window" class="glyphicon glyphicon-minus icon_minim"></span></a>
-    <a href="#"><span class="glyphicon glyphicon-remove icon_close" data-id="chat_window_1"></span></a>
-</div>
--->
-            </div>
+                <div ng-show="chatwindowEnabled">
+                    <div class="row well" style="height:220px; overflow:auto; font-size:15px;margin-bottom:0px" id="autoscroll">
+                        <div ng-repeat="chat in chats">
+                            <div ng-if="chat.creator == currentuser">
+                                <div class="row msg_container base_sent">
+                                    <div class="col-md-10 col-xs-10">
+                                        <div class="messages msg_sent">
+                                            <u>{{chat.creator}}:</u>
+                                            <br>
+                                            <p>{{chat.message}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div ng-if="!(chat.creator == currentuser)">
+                                <div class="row msg_container base_receive">
+                                    <div class="col-md-10 col-xs-10">
+                                        <div class="messages msg_receive">
+                                            <u>{{chat.creator}}:</u>
+                                            <br>
+                                            <p>{{chat.message}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-            <div class="row well" style="height:220px; overflow:auto; font-size:15px;margin-bottom:0px" id="autoscroll">
-                <div ng-repeat="chat in chats">
-                    <div ng-if="chat.creator == currentuser">
-                        <div class="row msg_container base_sent">
-                            <div class="col-md-10 col-xs-10">
-                                <div class="messages msg_sent">
-                                    <u>{{chat.creator}}:</u>
-                                    <br>
-                                    <p>{{chat.message}}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div ng-if="!(chat.creator == currentuser)">
-                        <div class="row msg_container base_receive">
-                            <div class="col-md-10 col-xs-10">
-                                <div class="messages msg_receive">
-                                    <u>{{chat.creator}}:</u>
-                                    <br>
-                                    <p>{{chat.message}}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="panel-footer row well">
-                <div class="input-group" ng-show="isLoggedIn">
-                    <input id="btn-input" type="text" ng-model="chatMessage" class="form-control input-sm chat_input" placeholder="Write your message here..." />
-                    <span class="input-group-btn">
+                    <div class="panel-footer row well">
+                        <div class="input-group" ng-show="isLoggedIn">
+                            <input id="btn-input" type="text" ng-model="chatMessage" class="form-control input-sm chat_input" placeholder="Write your message here..." />
+                            <span class="input-group-btn">
                         <button class="btn btn-primary btn-sm" id="btn-chat"  ng-click="createChat()">Send</button>
                         </span>
-                </div>
-                <div ng-show="!isLoggedIn" style="float:left">
-                    You are not logged in..
+                        </div>
+                        <div ng-show="!isLoggedIn" style="float:left">
+                            You need to log in to post
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

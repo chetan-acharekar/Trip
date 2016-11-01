@@ -23,6 +23,7 @@
     "angular-socialshare": "^1.4.5",
     "angular-bootstrap-lightbox": "^0.12.0",
     "angular-bootstrap": "^2.2.0",
-    "angular-loading-bar": "^0.9.0"
+    "angular-loading-bar": "^0.9.0",
+    "angularjs-social-login": "^2.4.5"
   }
 }

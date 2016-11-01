@@ -1,5 +1,5 @@
 // public/js/appRoutes.js
-app.config(['$routeProvider', '$locationProvider', 'LightboxProvider', function ($routeProvider, $locationProvider, LightboxProvider) {
+app.config(['$routeProvider', '$locationProvider', 'LightboxProvider', 'socialProvider', function ($routeProvider, $locationProvider, LightboxProvider, socialProvider) {
 
     LightboxProvider.fullScreenMode = true;
     $routeProvider
@@ -40,11 +40,14 @@ app.config(['$routeProvider', '$locationProvider', 'LightboxProvider', function 
         });
 
 
+    socialProvider.setGoogleKey("925731543706-p6h2ds1acqlg9dbrv8ib9v76ahbgnh28");
 
 
     $locationProvider.html5Mode({
         enabled: true,
         requireBase: false
     });
+
+
 
 }]);

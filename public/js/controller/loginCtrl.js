@@ -1,7 +1,12 @@
-app.controller('loginController', function ($scope, $location, httpservice, configservice, sharedservice) {
+app.controller('loginController', function ($scope, $window, $location, httpservice, configservice, sharedservice, $rootScope, socialLoginService) {
 
 
-    $scope.tagline = 'To the moon and back!from login';
+    $scope.isLoggedIn = sharedservice.isLoggedIn();
+    $scope.username = sharedservice.username();
+    if ($scope.username == null) {
+        $scope.isLoggedIn = false;
+    }
+
     $scope.login = function () {
         httpservice.post(configservice.loginURL, {
             'username': $scope.username,
@@ -50,5 +55,19 @@ app.controller('loginController', function ($scope, $location, httpservice, conf
             });
         }
     };
+
+    $scope.signOut = function () {
+        $scope.$emit('logout');
+
+        sharedservice.logout();
+        $scope.isLoggedIn = false;
+    }
+
+    $rootScope.$on('event:social-sign-in-success', function (event, userDetails) {
+        sharedservice.setuserlogin(userDetails.name.split(" ")[0]);
+        $scope.$emit('userLoggedin');
+        $location.path('/blogs');
+        $scope.$apply()
+    });
 
 });

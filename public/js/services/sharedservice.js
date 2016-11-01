@@ -10,6 +10,10 @@ app.factory('sharedservice', function ($http, $window) {
         'setuserlogin': function (username) {
             $window.sessionStorage.setItem('isLoggedIn', true);
             $window.sessionStorage.setItem('username', username);
+        },
+        'logout': function () {
+            $window.sessionStorage.removeItem('isLoggedIn');
+            $window.sessionStorage.removeItem('username');
         }
     }
 });

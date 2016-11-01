@@ -3,7 +3,8 @@
     <!-- <div class="jumbotron">
         <h1>Lets start !!</h1>
     </div> -->
-    <div class="form-group" style="height:100vh">
+    <div class="form-group" style="height:100vh" ng-show="!isLoggedIn">
+
         <div class="row">
             <div class="col-sm-4">
                 Username:
@@ -18,6 +19,8 @@
             </div>
         </div>
         <br>
+
+
         <div class="row" ng-show="enableRegistration">
             <div class="col-sm-4">
                 Retype password:
@@ -29,5 +32,17 @@
         <button ng-click="register()" ng-show="!enableRegistration">register</button>
         <button ng-click="confirmAndRegister()" ng-show="enableRegistration">confirm</button>
         <br>
+        <br>
+        <div class="row" g-login type="button">
+            <div class="col-md-2">
+                <img src="/assets/google-login.png" width=10>
+            </div>
+        </div>
     </div>
+
+    <div ng-show="isLoggedIn">
+        You are signed in as {{username}}
+        <button ng-click="signOut()">Sign out</button>
+    </div>
+
 </div>
