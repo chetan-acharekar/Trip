@@ -14,7 +14,7 @@ var express = require('express'),
     io = require('socket.io')(http);
 
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
@@ -35,21 +35,21 @@ app.use('/api/login', loginroute);
 app.use('/api/image', imageuploadroute);
 
 
-app.get('*', function(req, res) {
+app.get('*', function (req, res) {
     var md = new MobileDetect(req.headers['user-agent']);
     if (md.mobile() == null) {
         res.sendFile(__dirname + '/public/desktop.html');
     } else {
-        res.redirect('http://192.168.0.106:8000/index.html')
+        res.redirect('http://139.59.47.155:8000/index.html')
     }
 });
 
-http.listen(80, function() {
+http.listen(80, function () {
     console.log('Express app started')
 });
 
-io.on('connection', function(socket) {
-    socket.on('chatupdated', function() {
+io.on('connection', function (socket) {
+    socket.on('chatupdated', function () {
         io.emit('updatechatlist', 'msg');
     })
 });
