@@ -1,48 +1,55 @@
 <!-- public/views/home.html -->
-<div class="container">
+<br>
+<br>
+<div class="container" style="height:100vh">
     <!-- <div class="jumbotron">
         <h1>Lets start !!</h1>
     </div> -->
-    <div class="form-group" style="height:100vh" ng-show="!isLoggedIn">
+    <div class="form-group row" ng-show="!isLoggedIn">
+        <div class="col-md-2"></div>
+        <div class="well col-sm-8">
+            <div class="row ">
+                <div class="col-sm-4">
+                    Username:
+                    <input type="text" ng-model="username" class="form-control">
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm-4">
+                    Password:
+                    <input type="password" ng-model="password" class="form-control">
+                </div>
+            </div>
+            <br>
 
-        <div class="row">
-            <div class="col-sm-4">
-                Username:
-                <input type="text" ng-model="username" class="form-control">
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-sm-4">
-                Password:
-                <input type="password" ng-model="password" class="form-control">
-            </div>
-        </div>
-        <br>
 
-
-        <div class="row" ng-show="enableRegistration">
-            <div class="col-sm-4">
-                Retype password:
-                <input type="password" ng-model="confirmpassword" class="form-control">
+            <div class="row" ng-show="enableRegistration">
+                <div class="col-sm-4">
+                    Retype password:
+                    <input type="password" ng-model="confirmpassword" class="form-control">
+                </div>
+            </div>
+            <br>
+            <button ng-click="login()" class="btn btn-info" ng-show="!enableRegistration">Login</button>
+            <button ng-click="register()" class="btn btn-info" ng-show="!enableRegistration">register</button>
+            <button ng-click="confirmAndRegister()" class="btn btn-success" ng-show="enableRegistration">confirm</button>
+            <br>
+            <br>
+            <div class="row" g-login type="button" ng-show="false">
+                <div class="col-md-2">
+                    <img src="/assets/google-login.png" width=10>
+                </div>
             </div>
         </div>
-        <br>
-        <button ng-click="login()" ng-show="!enableRegistration">Login</button>
-        <button ng-click="register()" ng-show="!enableRegistration">register</button>
-        <button ng-click="confirmAndRegister()" ng-show="enableRegistration">confirm</button>
-        <br>
-        <br>
-        <div class="row" g-login type="button" ng-show="false">
-            <div class="col-md-2">
-                <img src="/assets/google-login.png" width=10>
-            </div>
-        </div>
+        <div class="col"></div>
     </div>
 
-    <div ng-show="isLoggedIn">
+    <div ng-show="isLoggedIn" class="well">
         You are signed in as {{username}}
-        <button ng-click="signOut()">Sign out</button>
+        <br>
+        <br>
+        <button ng-click="signOut()" class="btn btn-danger">Sign out</button>
     </div>
 
 </div>

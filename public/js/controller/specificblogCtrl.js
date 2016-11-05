@@ -6,7 +6,7 @@ app.controller('specificBlogController', function ($scope, httpservice, $timeout
     $scope.currentuser = sharedservice.username();
     $scope.isLoggedIn = sharedservice.isLoggedIn();
     $scope.galleryPicsExists = false;
-    $scope.chatwindowEnabled = true;
+    $scope.chatwindowEnabled = false;
     allEventService.getSpecificBlog($scope.blogid).then(function (response) {
         $scope.blog = response.data;
     }, function (error) {
