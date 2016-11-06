@@ -40,63 +40,71 @@
                 <br> By- {{currentTrip.createdBy}}
             </div>
             <div ng-show="editable">
-                <div class="col">
+                <div class="well">
                     <div class="row">
-                        <h4>
-            <span class="label label-primary">
+                        <h3>
+            <span class="label label-info">
                 Choose Files for gallery:
             </span>
-            </h4>
-                        <br>
-                        <input type="file" ngf-select ng-model="GalleryFiles" ngf-multiple="true">
-                        <br>
+            </h3>
                     </div>
-                    <button ng-click="uploadGaleeryImages()"> Upload</button>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <br>
+                            <input type="file" ngf-select ng-model="GalleryFiles" ngf-multiple="true">
+                            <br>
+                        </div>
+                        <div class="col-md-2">
+                            <button ng-click="uploadGaleeryImages()" class="btn btn-primary"> Upload</button>
+                        </div>
+                    </div>
                 </div>
-                <hr>
-                <hr>
-                <form ng-submit=updateTrip()>
-                    <input type="submit" value="update" class="btn btn-success" />
 
-                    <br>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-8">
-                            Title:
-                            <input type="text" ng-model="currentTrip.title" class="form-control" required>
-                        </div>
-                    </div>
-                    <br>
-
-                    <div class="row">
-                        <div class="col-md-8">
-                            Intro:
-                            <br>
-                            <textarea rows="4" ng-model="currentTrip.intro" class="form-control" required="true"></textarea>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-8">
-                            <input type="radio" name="TYPE" ng-model="currentTrip.type" value="TREK" required>Trek
-                            <br>
-                            <input type="radio" name="TYPE" ng-model="currentTrip.type" value="BLOG" required>Blog
-                        </div>
-                    </div>
-                    <br> Description:
-                    <br>
-                    <div text-angular="text-angular" name="htmlcontent" ng-model="currentTrip.description   " ta-disabled='disabled'>
-                    </div>
-
-                    <!--            <textarea rows="10" cols="50" ng-model="currentTrip.description" class="form-control"></textarea>-->
-                    <br>
-                    <br>
-                </form>
             </div>
-            <br>
-            <br>
-        </div>
+            <hr>
+            <hr>
+            <form ng-submit=updateTrip()>
+                <input type="submit" value="update" class="btn btn-success" />
 
-        <!--
+                <br>
+                <br>
+                <div class="row">
+                    <div class="col-md-8">
+                        Title:
+                        <input type="text" ng-model="currentTrip.title" class="form-control" required>
+                    </div>
+                </div>
+                <br>
+
+                <div class="row">
+                    <div class="col-md-8">
+                        Intro:
+                        <br>
+                        <textarea rows="4" ng-model="currentTrip.intro" class="form-control" required="true"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <input type="radio" name="TYPE" ng-model="currentTrip.type" value="TREK" required>Trek
+                        <br>
+                        <input type="radio" name="TYPE" ng-model="currentTrip.type" value="BLOG" required>Blog
+                    </div>
+                </div>
+                <br> Description:
+                <br>
+                <div text-angular="text-angular" name="htmlcontent" ng-model="currentTrip.description   " ta-disabled='disabled'>
+                </div>
+
+                <!--            <textarea rows="10" cols="50" ng-model="currentTrip.description" class="form-control"></textarea>-->
+                <br>
+                <br>
+            </form>
+        </div>
+        <br>
+        <br>
+    </div>
+
+    <!--
 <div class="col-md-5" ng-show="editable">
 
     Preview:
@@ -107,5 +115,5 @@
     <div ta-bind="text" ng-model="currentTrip.description" ta-readonly='disabled'></div>
 </div>
 -->
-    </div>
+</div>
 </div>

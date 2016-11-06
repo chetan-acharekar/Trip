@@ -49,7 +49,8 @@ router.get('/', function (req, res) {
         'participants': [],
         'description': req.body.description,
         'intro': req.body.intro,
-        'type': req.body.type
+        'type': req.body.type,
+        'image': req.files[0].filename
     };
     debugger;
     tripdbCtrl.save(trip, function (error, response) {
