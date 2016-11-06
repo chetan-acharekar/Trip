@@ -1,6 +1,6 @@
 //TxtANgUploadImageModalInstance
 
-app.controller('UploadImageModalInstance', function ($scope, $uibModalInstance, Upload) {
+app.controller('UploadImageModalInstance', function ($scope, $uibModalInstance, Upload, configservice) {
 
     $scope.image = "";
     $scope.progress = 0;
@@ -14,7 +14,7 @@ app.controller('UploadImageModalInstance', function ($scope, $uibModalInstance, 
             $scope.progress = parseInt(100.0 * evt.loaded / evt.total);
         }).success(function (response) {
             $scope.progress = 0;
-            $scope.image = "/uploads/" + response.Data[0].name;
+            $scope.image = configservice.host + "/uploads/" + response.Data[0].name;
             $scope.insert();
         });
     };
