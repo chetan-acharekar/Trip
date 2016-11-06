@@ -44,7 +44,7 @@ router.get('/', function (req, res) {
         }
     });
 }).post('/', upload.any(), function (req, res) {
-    var images = [];
+    let images = [];
     for (var i = 0; i < req.files.length; i++) {
         images.push({
             createdBy: req.body.createdBy,
@@ -61,7 +61,8 @@ router.get('/', function (req, res) {
         } else {
             res.json({
                 "IsError": false,
-                "Message": "Images Added successfully"
+                "Message": "Images Added successfully",
+                "Data":images
             });
         }
     })

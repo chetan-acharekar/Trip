@@ -1,7 +1,8 @@
 // public/js/appRoutes.js
-app.config(['$routeProvider', '$locationProvider', 'LightboxProvider', 'socialProvider', function ($routeProvider, $locationProvider, LightboxProvider, socialProvider) {
+app.config(['$routeProvider', '$locationProvider', 'LightboxProvider', 'socialProvider', '$provide', function ($routeProvider, $locationProvider, LightboxProvider, socialProvider, $provide) {
 
     LightboxProvider.fullScreenMode = true;
+
     $routeProvider
         .when('/', {
             templateUrl: 'views/home.html',
@@ -48,6 +49,33 @@ app.config(['$routeProvider', '$locationProvider', 'LightboxProvider', 'socialPr
         requireBase: false
     });
 
+
+
+    $provide.decorator('taOptions', ['taRegisterTool', '$delegate', '$uibModal', function (taRegisterTool, taOptions, $uibModal) {
+        taRegisterTool('uploadImage', {
+            buttontext: 'Upload Image',
+            iconclass: "fa fa-image",
+            action: function (deferred, restoreSelection) {
+                $uibModal.open({
+                    controller: 'UploadImageModalInstance',
+                    templateUrl: '/views/textangularImageUpload.html'
+                }).result.then(
+                    function (result) {
+                        restoreSelection();
+                        document.execCommand('insertImage', true, result);
+                        deferred.resolve();
+                    },
+                    function () {
+                        deferred.resolve();
+                    }
+                );
+                return false;
+            }
+        });
+        taOptions.toolbar[1].push('uploadImage');
+        return taOptions;
+
+    }]);
 
 
 }]);

@@ -100,4 +100,22 @@ app.controller('tripAddController', function ($scope, sharedservice, textAngular
 
         });
     }
+
+
+
+    // TRIX
+
+    // $scope.trixAttachmentAdd = function (e) {
+    //     let attachment;
+    //     attachment = e.attachment;
+    //        Upload.upload({
+    //         url: configservice.uploadImage,
+    //         data: {
+    //             'createdBy': sharedservice.username()
+    //         },
+    //         file: attachment.file
+    //     }).then(function (response) {
+    //         attachment.url = "/uploads/"+response.data.Data[0].name;
+    //     })
+    // }
 });

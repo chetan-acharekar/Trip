@@ -10,7 +10,6 @@
                     <a href="#" class="close" ng-click="closeAlert($index)" aria-label="close">&times;</a> {{alertupdate.msg}}
                 </div>
             </div>
-
             <br>
             <br>
             <form ng-submit="createTripWithImage()">
@@ -18,70 +17,60 @@
                     <input value="create" class="btn btn-success" type="submit" />
                 </div>
                 <br>
-
                 <div class="row">
                     <h4>
-            <span class="label label-primary">
+                        <span class="label label-primary">
                 Choose Files for gallery:
             </span>
-            </h4>
+                    </h4>
                     <br>
                     <input type="file" ngf-select ng-model="GalleryFiles" ngf-multiple="true">
                     <br>
                 </div>
                 <div class="row">
                     <h4>
-            <span class="label label-primary">
+                        <span class="label label-primary">
                 Writing blog or planning trek ?
             </span>
-            </h4>
+                    </h4>
                     <div class="col-md-4">
                         <input type="radio" name='TYPE' ng-model="blogType" value="TREK" required>Trek
                         <br>
                         <input type="radio" name='TYPE' ng-model="blogType" value="BLOG" required>Blog
                     </div>
                 </div>
-
                 <div class="row">
-
                     <h4>
-            <span class="label label-primary">
+                        <span class="label label-primary">
                 Title:</span></h4>
-
                     <input type="text" ng-model="title" class="form-control" required="true">
-
                 </div>
-
                 <div class="row">
                     <h4>
-            <span class="label label-primary">
+                        <span class="label label-primary">
                 Intro:</span></h4>
                     <br>
                     <textarea rows="4" ng-model="intro" class="form-control" required="true"></textarea>
-
                 </div>
                 <div class="row">
-
                     <br>
                     <h4>
-                    <span class="label label-primary">TitleImage:</span></h4>
+                        <span class="label label-primary">TitleImage:</span></h4>
                     <br>
                     <input type="file" ng-model="titleImage" ngf-select class="form-control" required="true">
-
                 </div>
                 <div class="row">
-
                     <br>
                     <h4>
-                    <span class="label label-primary"> Description:</span></h4>
+                        <span class="label label-primary"> Description:</span></h4>
                     <br>
                     <div text-angular="text-angular" name="htmlcontent" ng-model="htmlcontent" ta-disabled='disabled'>
                     </div>
                 </div>
                 <br>
-
+                <br>
+                <br>
             </form>
-
             <br>
             <!--
 <div class="col-md-6">
@@ -93,12 +82,9 @@
 -->
         </div>
         <div class="col">
-
         </div>
     </div>
 </div>
-
-
 <!--
 <div class="row" ng-show="!isLoggedIn">
     You need to login first!!
