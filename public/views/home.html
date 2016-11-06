@@ -29,7 +29,7 @@
             <div class="col-md-3 ">
                 <div class="thumbnail " style="background-color:lavender; ">
                     <a href="/specificblogs/{{blog._id}} ">
-                        <img src="/uploads/{{blog.title}}.jpg " class="img-thumbnail ">
+                        <img src="/uploads/{{blog.image}}" class="img-thumbnail ">
                         <div style="text-align:center;color:#777;font-size:30px; ">{{blog.title}}</div>
                         <br>
                         <p style="text-align:justify;color:#777; ">{{blog.intro | limitTo:300}}....</p>
@@ -54,7 +54,7 @@
             <div class="col-md-3 ">
                 <div class="thumbnail " style="background-color:lavender; ">
                     <a href="/specificblogs/{{trek._id}} ">
-                        <img src="/uploads/{{trek.title}}.jpg " class="img-thumbnail ">
+                        <img src="/uploads/{{trek.image}} " class="img-thumbnail ">
                         <div style="text-align:center;color:#777 ">
                             <h3>{{trek.title}}</h3>
                             <br>
