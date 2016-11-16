@@ -40,7 +40,7 @@ app.get('*', function (req, res) {
     if (md.mobile() == null) {
         res.sendFile(__dirname + '/public/desktop.html');
     } else {
-        res.redirect('http://139.59.47.155:8000/index.html')
+        res.redirect('http://m.trekkingtoads.com')
     }
 });
 
