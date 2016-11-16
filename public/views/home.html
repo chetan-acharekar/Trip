@@ -24,7 +24,7 @@
     <br>
     <br>
     <div class="row ">
-        <div ng-repeat="blog in blogs| limitTo:-3 ">
+        <div ng-repeat="blog in blogs| orderBy:'-createdOn'| limitTo:-3 ">
             <!--            <div class="col-sm-3 well " style="background-color:lavender; " >-->
             <div class="col-md-3 ">
                 <div class="thumbnail " style="background-color:lavender; ">
@@ -49,7 +49,7 @@
     <br>
     <br>
     <div class="row ">
-        <div ng-repeat="trek in treks| limitTo:-3 ">
+        <div ng-repeat="trek in treks| orderBy:'-createdOn'| limitTo:-3 ">
             <!--            <div class="col-sm-3 well " style="background-color:lavender ">-->
             <div class="col-md-3 ">
                 <div class="thumbnail " style="background-color:lavender; ">
