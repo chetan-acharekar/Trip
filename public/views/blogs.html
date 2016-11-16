@@ -7,7 +7,7 @@
             <div gplus class="g-plus" data-size="tall" data-annotation="bubble" data-href='http://trekkingtoad.com/blogs' data-action='share'></div>
         </div>
         <div class="col-md-6" style="font-family: 'Architects Daughter', cursive;font-size:15px;">
-            <div ng-repeat="blog in blogs">
+            <div ng-repeat="blog in blogs|orderBy:'-createdOn'">
                 <div class="well well-lg" style="background-color:lavender;color:#777 ">
                     <a href="/specificblogs/{{blog._id}}">
                         <h3><b>{{blog.title}}</b></h3>

@@ -9,7 +9,7 @@
         </div>
 
         <div class="col-md-6">
-            <div ng-repeat="trek in treks">
+            <div ng-repeat="trek in treks|orderBy:'-createdOn'">
                 <div class="well well-lg" style="background-color:lavender;color:#777 ">
                     <a href="/specificblogs/{{trek._id}}">
                         <h3><b>{{trek.title}}</b></h3>
