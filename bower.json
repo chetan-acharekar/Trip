@@ -24,6 +24,7 @@
     "angular-bootstrap-lightbox": "^0.12.0",
     "angular-bootstrap": "^2.2.0",
     "angular-loading-bar": "^0.9.0",
-    "satellizer": "^0.15.5"
+    "satellizer": "^0.15.5",
+    "angular-ui-switch": "^0.1.1"
   }
 }

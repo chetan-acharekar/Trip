@@ -7,8 +7,15 @@ app.controller('specificBlogController', function ($scope, httpservice, $timeout
     $scope.isLoggedIn = sharedservice.isLoggedIn();
     $scope.galleryPicsExists = false;
     $scope.chatwindowEnabled = false;
+
     allEventService.getSpecificBlog($scope.blogid).then(function (response) {
         $scope.blog = response.data;
+        for (var count = 0; count < response.data.participants.length; count++) {
+            if (sharedservice.userId() == response.data.participants[count]) {
+                $scope.updateFlag = true;
+                break;
+            }
+        };
     }, function (error) {
 
     });
@@ -81,4 +88,15 @@ app.controller('specificBlogController', function ($scope, httpservice, $timeout
     $scope.getchats($scope.blogid);
     getGalleryImages();
 
+
+
+
+    $scope.updateUserId = function () {
+
+        allEventService.updateUserForTrip($scope.blogid, sharedservice.userId(), $scope.updateFlag).then(function (response) {
+
+        }, function (error) {
+
+        })
+    }
 });

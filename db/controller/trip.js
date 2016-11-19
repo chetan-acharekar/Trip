@@ -53,5 +53,41 @@ module.exports = {
                 callback(null)
             }
         });
+    },
+    addUserToTrip: function (tripId, userId, callback) {
+        let query = {
+            '_id': tripId
+        };
+
+        tripmodel.update(query, {
+            '$addToSet': {
+                'participants': userId
+            }
+        }, (err, response) => {
+            debugger;
+            if (err) {
+                callback(err)
+            } else {
+                callback()
+            }
+        });
+    },
+    removeUserFromTrip: function (tripId, userId, callback) {
+        let query = {
+            '_id': tripId
+        };
+        debugger;
+        tripmodel.update(query, {
+            '$pull': {
+                'participants': userId
+            }
+        }, (err, response) => {
+            debugger;
+            if (err) {
+                callback(err)
+            } else {
+                callback()
+            }
+        });
     }
 }

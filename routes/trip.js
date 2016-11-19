@@ -93,6 +93,34 @@ router.get('/', function (req, res) {
             });
         }
     });
+}).put('/:id/updateParticipant', function (req, res) {
+    if (req.body.updateFlag) {
+        tripdbCtrl.addUserToTrip(req.params.id, req.body.userId, function (err) {
+            if (err) {
+                res.send({
+                    'error': err
+                }).status(500);
+            } else {
+                res.json({
+                    "IsError": false,
+                    "Message": "user added successfully to this trip"
+                });
+            }
+        })
+    } else {
+        tripdbCtrl.removeUserFromTrip(req.params.id, req.body.userId, function (err) {
+            if (err) {
+                res.send({
+                    'error': err
+                }).status(500);
+            } else {
+                res.json({
+                    "IsError": false,
+                    "Message": "user removed successfully from this trip"
+                });
+            }
+        })
+    }
 })
 
 module.exports = router;

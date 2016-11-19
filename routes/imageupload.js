@@ -62,17 +62,15 @@ router.get('/', function (req, res) {
             res.json({
                 "IsError": false,
                 "Message": "Images Added successfully",
-                "Data":images
+                "Data": images
             });
         }
     })
 }).get('/tag/:tagid', function (req, res) {
-    debugger;
     var query = {
         'tag': req.params.tagid
     };
     imagedbCtrl.find(query, function (error, response) {
-        debugger;
         var result = {
             images: response,
             path: config.filepath

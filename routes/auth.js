@@ -25,7 +25,6 @@ router.post('/google', function (req, res) {
         json: true,
         form: params
     }, function (err, response, token) {
-        debugger;
         var accessToken = token.access_token;
         var headers = {
             Authorization: 'Bearer ' + accessToken
@@ -37,7 +36,6 @@ router.post('/google', function (req, res) {
             headers: headers,
             json: true
         }, function (err, response, profile) {
-            debugger;
             if (profile.error) {
                 return res.status(500).send({
                     message: profile.error.message
@@ -48,7 +46,6 @@ router.post('/google', function (req, res) {
             userdbCtrl.find({
                 'mail': profile.email
             }, function (err, user) {
-                debugger;
                 //step 4 create user
                 if (user.length == 0) {
                     let userObject = {

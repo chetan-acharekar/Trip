@@ -70,7 +70,7 @@ app.controller('loginController', function ($scope, $window, $location, httpserv
         $auth.authenticate(provider).then(function (response) {
                 // Signed in with Google.
                 $scope.username = response.data.userObject.firstname;
-                sharedservice.setuserlogin(response.data.userObject.firstname);
+                sharedservice.setuserlogin(response.data.userObject.firstname, response.data.userObject._id);
                 $scope.$emit('userLoggedin');
                 $scope.isLoggedIn = true;
                 $location.path('/blogs');
@@ -81,17 +81,17 @@ app.controller('loginController', function ($scope, $window, $location, httpserv
     };
 
 
-//    $scope.options = {
-         //        'onsuccess': function (response) {
-         //            sharedservice.setuserlogin(response.w3.ig.split(" ")[0]);
-         //            $scope.$emit('userLoggedin');
-         //            //$location.path('/blogs');
-         //            console.log(response.w3.U3);
-         //            $scope.isLoggedIn = true;
-         //            $scope.$apply();
-         //        },
-         //        'theme': 'dark',
-         //        'longtitle': false
-         //    };
+    //    $scope.options = {
+    //        'onsuccess': function (response) {
+    //            sharedservice.setuserlogin(response.w3.ig.split(" ")[0]);
+    //            $scope.$emit('userLoggedin');
+    //            //$location.path('/blogs');
+    //            console.log(response.w3.U3);
+    //            $scope.isLoggedIn = true;
+    //            $scope.$apply();
+    //        },
+    //        'theme': 'dark',
+    //        'longtitle': false
+    //    };
 
 });
