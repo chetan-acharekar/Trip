@@ -8,6 +8,7 @@ var express = require('express'),
     triproute = require('./routes/trip.js'),
     chatroute = require('./routes/chat.js'),
     auth = require('./middlewares/authenticator.js'),
+    socialAuth = require('./routes/auth.js'),
     imageuploadroute = require('./routes/imageupload.js'),
     http = require('http').Server(app),
     MobileDetect = require('mobile-detect'),
@@ -33,6 +34,7 @@ app.use('/api/trip', triproute);
 app.use('/api/user/admin', adminroute);
 app.use('/api/login', loginroute);
 app.use('/api/image', imageuploadroute);
+app.use('/auth',socialAuth);
 
 
 app.get('*', function (req, res) {

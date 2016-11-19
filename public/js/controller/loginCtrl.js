@@ -1,4 +1,4 @@
-app.controller('loginController', function ($scope, $window, $location, httpservice, configservice, sharedservice, $rootScope, socialLoginService) {
+app.controller('loginController', function ($scope, $window, $location, httpservice, configservice, sharedservice, $route, $auth) {
 
 
     $scope.isLoggedIn = sharedservice.isLoggedIn();
@@ -58,16 +58,40 @@ app.controller('loginController', function ($scope, $window, $location, httpserv
 
     $scope.signOut = function () {
         $scope.$emit('logout');
-
         sharedservice.logout();
         $scope.isLoggedIn = false;
-    }
+        $auth.logout();
+    };
 
-    $rootScope.$on('event:social-sign-in-success', function (event, userDetails) {
-        sharedservice.setuserlogin(userDetails.name.split(" ")[0]);
-        $scope.$emit('userLoggedin');
-        $location.path('/blogs');
-        $scope.$apply()
-    });
+
+    $scope.authenticate = function (provider) {
+        $scope.username = null;
+        $scope.password = null;
+        $auth.authenticate(provider).then(function (response) {
+                // Signed in with Google.
+                $scope.username = response.data.userObject.firstname;
+                sharedservice.setuserlogin(response.data.userObject.firstname);
+                $scope.$emit('userLoggedin');
+                $scope.isLoggedIn = true;
+                $location.path('/blogs');
+            })
+            .catch(function (response) {
+                // Something went wrong.
+            });;
+    };
+
+
+//    $scope.options = {
+         //        'onsuccess': function (response) {
+         //            sharedservice.setuserlogin(response.w3.ig.split(" ")[0]);
+         //            $scope.$emit('userLoggedin');
+         //            //$location.path('/blogs');
+         //            console.log(response.w3.U3);
+         //            $scope.isLoggedIn = true;
+         //            $scope.$apply();
+         //        },
+         //        'theme': 'dark',
+         //        'longtitle': false
+         //    };
 
 });

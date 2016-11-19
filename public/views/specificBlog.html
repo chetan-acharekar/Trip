@@ -52,7 +52,7 @@
                     </div>
                 </div>
                 <div ng-show="chatwindowEnabled">
-                    <div class="row well" style="height:220px; overflow:auto; font-size:15px;margin-bottom:0px" id="autoscroll">
+                    <div class="row well" style="height:250px; overflow:auto; font-size:15px;margin-bottom:0px" id="autoscroll">
                         <div ng-repeat="chat in chats">
                             <div ng-if="chat.creator == currentuser">
                                 <div class="row msg_container base_sent">
@@ -80,14 +80,14 @@
                     </div>
 
                     <div class="panel-footer row well">
-                        <div class="input-group" ng-show="isLoggedIn">
+                        <form ng-submit="createChat()" class="input-group" ng-show="isLoggedIn">
                             <input id="btn-input" type="text" ng-model="chatMessage" class="form-control input-sm chat_input" placeholder="Write your message here..." />
                             <span class="input-group-btn">
-                        <button class="btn btn-primary btn-sm" id="btn-chat"  ng-click="createChat()">Send</button>
+                        <input type="submit" class="btn btn-primary btn-sm" id="btn-chat">Send</button>
                         </span>
-                        </div>
+                        </form>
                         <div ng-show="!isLoggedIn" style="float:left">
-                            You need to log in to post
+                            <a href="/login">You need to log in to post</a>
                         </div>
                     </div>
                 </div>

@@ -36,9 +36,12 @@
             <button ng-click="confirmAndRegister()" class="btn btn-success" ng-show="enableRegistration">confirm</button>
             <br>
             <br>
-            <div class="row" g-login type="button" ng-show="false">
+            <div class="row" g-login type="button">
                 <div class="col-md-2">
-                    <img src="/assets/google-login.png" width=10>
+                    <!--                    <google-sign-in-button button-id="uniqueid" options="options"></google-sign-in-button>-->
+
+                    <img src="/assets/google-login.png" ng-click="authenticate('google')" width=10>
+
                 </div>
             </div>
         </div>

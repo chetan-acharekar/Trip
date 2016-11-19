@@ -1,5 +1,5 @@
 // public/js/appRoutes.js
-app.config(['$routeProvider', '$locationProvider', 'LightboxProvider', 'socialProvider', '$provide', function ($routeProvider, $locationProvider, LightboxProvider, socialProvider, $provide) {
+app.config(['$routeProvider', '$locationProvider', 'LightboxProvider', '$provide', '$authProvider', function ($routeProvider, $locationProvider, LightboxProvider, $provide, $authProvider) {
 
     LightboxProvider.fullScreenMode = true;
 
@@ -36,12 +36,12 @@ app.config(['$routeProvider', '$locationProvider', 'LightboxProvider', 'socialPr
         }).when('/treks', {
             templateUrl: 'views/treks.html',
             controller: 'treksController'
+        }).when('/gallery', {
+            templateUrl: 'views/gallery.html',
+            controller: 'galleryController'
         }).otherwise({
             redirectTo: '/'
         });
-
-
-    socialProvider.setGoogleKey("925731543706-p6h2ds1acqlg9dbrv8ib9v76ahbgnh28");
 
 
     $locationProvider.html5Mode({
@@ -49,6 +49,13 @@ app.config(['$routeProvider', '$locationProvider', 'LightboxProvider', 'socialPr
         requireBase: false
     });
 
+
+
+    // Google
+    $authProvider.google({
+        clientId: '930983681431-o1gr6t3ubvjefoi45ehijih08p6g95ma',
+        scope: ['profile', 'email']
+    });
 
 
     $provide.decorator('taOptions', ['taRegisterTool', '$delegate', '$uibModal', function (taRegisterTool, taOptions, $uibModal) {
@@ -74,7 +81,6 @@ app.config(['$routeProvider', '$locationProvider', 'LightboxProvider', 'socialPr
         });
         taOptions.toolbar[1].push('uploadImage');
         return taOptions;
-
     }]);
 
 
