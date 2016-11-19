@@ -60,7 +60,6 @@ router.post('/google', function (req, res) {
                         'username': profile.email
                     }
                     userdbCtrl.save(userObject, (err, response) => {
-                        let token = createJWT(user);
                         res.send({
                             userObject: response
                         });
