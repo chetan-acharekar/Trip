@@ -65,7 +65,7 @@
                 <div ng-show="chatwindowEnabled">
                     <div class="row well" style="height:250px; overflow:auto; font-size:15px;margin-bottom:0px" id="autoscroll">
                         <div ng-repeat="chat in chats">
-                            <div ng-if="chat.creator==c urrentuser">
+                            <div ng-if="chat.creator==currentuser">
                                 <div class="row msg_container base_sent">
                                     <div class="col-md-10 col-xs-10">
                                         <div class="messages msg_sent">
@@ -76,7 +76,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div ng-if="!(chat.creator==c urrentuser)">
+                            <div ng-if="!(chat.creator==currentuser)">
                                 <div class="row msg_container base_receive">
                                     <div class="col-md-10 col-xs-10">
                                         <div class="messages msg_receive">
