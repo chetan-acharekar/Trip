@@ -69,9 +69,14 @@ app.controller('loginController', function ($scope, $window, $location, httpserv
         $scope.password = null;
         $auth.authenticate(provider).then(function (response) {
                 // Signed in with Google.
-                $scope.username = response.data.userObject.firstname;
+
+                if (response.data.userObject.IsAdmin) {
+                    $scope.$emit('adminLoggedin');
+                } else {
+                    $scope.$emit('userLoggedin');
+                }
                 sharedservice.setuserlogin(response.data.userObject.firstname, response.data.userObject._id);
-                $scope.$emit('userLoggedin');
+                $scope.username = response.data.userObject.firstname;
                 $scope.isLoggedIn = true;
                 $location.path('/blogs');
             })
