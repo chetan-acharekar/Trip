@@ -1,4 +1,4 @@
-app.controller('mainController', function ($scope, sharedservice, httpservice, allEventService, configservice) {
+app.controller('mainController', function ($scope, $interval, sharedservice, httpservice, allEventService, configservice) {
 
     $scope.isLoggedIn = sharedservice.isLoggedIn();
     $scope.isAdmin = false;
@@ -26,8 +26,20 @@ app.controller('mainController', function ($scope, sharedservice, httpservice, a
 
     $scope.treks = [];
     $scope.blogs = [];
+    var greetTextArray = ["CAMPING", "ADVENTURE", "BIKERIDING"],
+        greetcount = 0;
+    $scope.greetText = greetTextArray[greetcount];
+    $interval(function () {
+        if (greetcount < greetTextArray.length) {
+            greetcount++;
+        } else {
+            greetcount = 0;
+        }
+        $scope.greetText = greetTextArray[greetcount];
+    }, 2000);
 
     allEventService.getBlogs().then(function (response) {
+        httpservice.post(configservice.host + configservice.logCount);
         $scope.blogs;
         response.data.map(function (blog) {
             if (blog.type == "BLOG") {
