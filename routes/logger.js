@@ -8,8 +8,7 @@ router.post('/count', function (req, res) {
     res.send({
         "IsError": false
     });
-
-    logCtrl.increameaneCount(function (error, response) {})
+    logCtrl.increameaneCount(req.body.count, function (error, response) {})
 })
 
 module.exports = router;
