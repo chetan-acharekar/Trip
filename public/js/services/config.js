@@ -1,6 +1,6 @@
 app.factory('configservice', function () {
     return {
-        'host': 'http://localhost/',
+        'host': 'http://trekkingtoads.com/',
         'loginURL': '/api/login',
         'tripURL': '/api/trip',
         'chatURL': '/api/chat',
