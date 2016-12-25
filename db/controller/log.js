@@ -2,11 +2,10 @@ var mongoose = require('mongoose'),
     logmodel = require('../models/index.js').log;
 
 module.exports = {
-    increameaneCount: function (callback) {
+    increameaneCount: function (countInput, callback) {
         logmodel.find({}, function (error, response) {
-            console.log(response.length === 0 ? 0 : response[0]._doc.siteVisitCount);
             logmodel.update({}, {
-                    'siteVisitCount': response.length === 0 ? 0.5 : response[0]._doc.siteVisitCount + 0.5
+                    'siteVisitCount': response.length === 0 ? countInput : response[0]._doc.siteVisitCount + countInput
                 }, {
                     upsert: true
                 },

@@ -39,7 +39,9 @@ app.controller('mainController', function ($scope, $interval, sharedservice, htt
     }, 2000);
 
     allEventService.getBlogs().then(function (response) {
-        httpservice.post(configservice.host + configservice.logCount);
+        httpservice.post(configservice.host + configservice.logCount, {
+            count: 0.5
+        });
         $scope.blogs;
         response.data.map(function (blog) {
             if (blog.type == "BLOG") {
