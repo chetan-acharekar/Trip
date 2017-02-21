@@ -9,7 +9,8 @@ var mongoose = require('mongoose'),
         'intro': String,
         'description': String,
         'image': String,
-        'type': String
+        'type': String,
+        'date':Date
     });
 
 module.exports = mongoose.model('TblTrip', tripchema);

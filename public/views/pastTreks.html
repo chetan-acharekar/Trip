@@ -1,20 +1,15 @@
 <div class="container" style="height:100vh">
-    <div class="row" style="font-family: 'Architects Daughter', cursive;font-size:50px;" ng-show="treks.length == 0">
+    <div class="row" style="font-family: 'Architects Daughter', cursive;font-size:15px;">
         <br>
-        <br>
-        Ohhh, Looks like we Dont have any trek right now. Message us on facebok and we will try to arrange one for you!
-    </div>
-    <div class="row" style="font-family: 'Architects Daughter', cursive;font-size:15px;" ng-show="treks.length != 0">
-        <br>
+
         <div class="col-md-1">
-            <a twitter data-lang="en" data-count='horizontal' data-url='http://trekkingtoad.com/blogs' data-via='' data-size="medium"
-                data-text='TrekkingToad'></a>
-            <div linkedin class="linkedinShare" data-url='http://trekkingtoad.com/blogs' data-title='Linkedin Share' data-summary="testing Linkedin Share"
-                data-shares='linkedinshares'>Share</div>
+            <a twitter data-lang="en" data-count='horizontal' data-url='http://trekkingtoad.com/blogs' data-via='' data-size="medium" data-text='TrekkingToad'></a>
+            <div linkedin class="linkedinShare" data-url='http://trekkingtoad.com/blogs' data-title='Linkedin Share' data-summary="testing Linkedin Share" data-shares='linkedinshares'>Share</div>
             <div gplus class="g-plus" data-size="tall" data-annotation="bubble" data-href='http://trekkingtoad.com/blogs' data-action='share'></div>
         </div>
+
         <div class="col-md-6">
-            <div ng-repeat="trek in treks|orderBy:'-createdOn'">
+            <div ng-repeat="trek in pastTreks|orderBy:'-createdOn'">
                 <div class="well well-lg" style="background-color:lavender;color:#777 ">
                     <a href="/specificblogs/{{trek._id}}">
                         <h3><b>{{trek.title}}</b></h3>
@@ -27,6 +22,7 @@
                 <br>
             </div>
         </div>
+
         <div class="col-md-1"></div>
         <div class="col-md-3">
             <br>
@@ -37,9 +33,7 @@
                 <div class="well">
                     <h4><b>{{title}}</b></h4>
                     <p>
-                        Hi friends, welcome to winter trekking. Winter brings plenty of new treks which are not quite accessible in rains. You can
-                        enjoy uninterrupted fogless scenery, striking cold nights, star gazing in the pitch dark night miles
-                        away from hustle and bustle of cities.
+                        Hi friends, welcome to winter trekking. Winter brings plenty of new treks which are not quite accessible in rains. You can enjoy uninterrupted fogless scenery, striking cold nights, star gazing in the pitch dark night miles away from hustle and bustle of cities.
                     </p>
                 </div>
                 <br>

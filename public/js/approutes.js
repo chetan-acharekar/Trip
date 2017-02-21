@@ -39,6 +39,9 @@ app.config(['$routeProvider', '$locationProvider', 'LightboxProvider', '$provide
         }).when('/gallery', {
             templateUrl: 'views/gallery.html',
             controller: 'galleryController'
+        }).when('/pasttreks', {
+            templateUrl: 'views/pastTreks.html',
+            controller: 'pastTrekController'
         }).otherwise({
             redirectTo: '/'
         });
