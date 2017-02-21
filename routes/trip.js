@@ -8,7 +8,6 @@ var express = require('express'),
             cb(null, './public/uploads')
         },
         filename: function (req, file, cb) {
-            debugger;
             cb(null, req.body.title + '.' + file.originalname.split('.')[file.originalname.split('.').length - 1])
         }
     }),
@@ -50,9 +49,9 @@ router.get('/', function (req, res) {
         'description': req.body.description,
         'intro': req.body.intro,
         'type': req.body.type,
-        'image': req.files[0].filename
+        'image': req.files[0].filename,
+        'date':req.body.date
     };
-    debugger;
     tripdbCtrl.save(trip, function (error, response) {
         if (error) {
             res.send({

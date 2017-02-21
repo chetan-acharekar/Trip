@@ -37,7 +37,8 @@ app.controller('tripAddController', function ($scope, sharedservice, textAngular
                 'createdBy': sharedservice.username(),
                 'description': $scope.htmlcontent,
                 'intro': $scope.intro,
-                'type': $scope.blogType
+                'type': $scope.blogType,
+                'date':$scope.tripDate
             },
             file: $scope.titleImage
         }).then(function (response) {

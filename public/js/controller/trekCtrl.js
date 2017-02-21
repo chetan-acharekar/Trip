@@ -1,10 +1,9 @@
 app.controller('treksController', function ($scope, $timeout, $window, sharedservice, configservice, httpservice, allEventService) {
-    $scope.blogs = [];
+    $scope.treks = [];
     allEventService.getBlogs().then(function (response) {
-        $scope.blogs;
-        response.data.map(function (blog) {
-            if (blog.type == "TREK") {
-                $scope.blogs.push(blog);
+        response.data.map(function (trek) {
+            if (trek.type == "TREK" && trek.date && new Date(trek.date) > new Date()) {
+                $scope.treks.push(trek);
             }
         });
     }, function (error) {
