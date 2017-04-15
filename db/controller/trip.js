@@ -76,13 +76,11 @@ module.exports = {
         let query = {
             '_id': tripId
         };
-        debugger;
         tripmodel.update(query, {
             '$pull': {
                 'participants': userId
             }
         }, (err, response) => {
-            debugger;
             if (err) {
                 callback(err)
             } else {
