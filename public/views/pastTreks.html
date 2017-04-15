@@ -11,7 +11,7 @@
         <div class="col-md-6">
             <div ng-repeat="trek in pastTreks|orderBy:'-createdOn'">
                 <div class="well well-lg" style="background-color:lavender;color:#777 ">
-                    <a href="/specificblogs/{{trek._id}}">
+                    <a href="/{{trek._id}}/{{trek.slug}}">
                         <h3><b>{{trek.title}}</b></h3>
                         <br>
                         <!--<div style="background-image:url('../assets/{{blog.title}}.jpg'); max-height:100%;max-width:100%;background-size: cover;"></div>-->

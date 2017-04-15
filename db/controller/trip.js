@@ -1,9 +1,14 @@
 var mongoose = require('mongoose'),
-    tripmodel = require('../models/index.js').trip;
+    tripmodel = require('../models/index.js').trip,
+    _ = require('lodash'),
+    utlity = require('../../helpers/utility')
+
 
 
 module.exports = {
+    
     find: function (query, callback) {
+        var self = this;
         if (callback == null) {
             callback = query;
             query = null;
@@ -12,7 +17,22 @@ module.exports = {
             if (error) {
                 callback(error)
             } else {
-                callback(null, response)
+                callback(null, response);
+
+                response.forEach(function (trip) {
+                    if (!trip._doc.slug) {
+                        self.update(trip._doc._id, {
+                            slug: utlity.slugify(trip.title)
+                        }, function (err, response) {
+                            if (err) {
+                                debugger;
+                            }
+                        })
+                    }
+                });
+
+
+
             }
         })
     },
@@ -22,7 +42,8 @@ module.exports = {
             if (error) {
                 callback(error)
             } else {
-                callback(null, response)
+                callback(null, response);
+
             }
         })
     },

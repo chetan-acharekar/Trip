@@ -35,7 +35,7 @@
             <!--            <div class="col-sm-3 well " style="background-color:lavender; " >-->
             <div class="col-md-3 ">
                 <div class="thumbnail " style="background-color:lavender; ">
-                    <a href="/specificblogs/{{blog._id}} ">
+                    <a href="/{{blog._id}}/{{blog.slug}}">
                         <img src="/uploads/{{blog.image}}" class="img-thumbnail ">
                         <div style="text-align:center;color:#777;font-size:30px; ">{{blog.title}}</div>
                         <br>
@@ -60,7 +60,7 @@
             <!--            <div class="col-sm-3 well " style="background-color:lavender ">-->
             <div class="col-md-3 ">
                 <div class="thumbnail " style="background-color:lavender; ">
-                    <a href="/specificblogs/{{trek._id}} ">
+                    <a href="/{{trek._id}}/{{trek.slug}}">
                         <img src="/uploads/{{trek.image}} " class="img-thumbnail ">
                         <div style="text-align:center;color:#777 ">
                             <h3>{{trek.title}}</h3>

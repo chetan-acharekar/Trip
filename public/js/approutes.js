@@ -29,7 +29,7 @@ app.config(['$routeProvider', '$locationProvider', 'LightboxProvider', '$provide
         }).when('/tripedit', {
             templateUrl: 'views/tripedit.html',
             controller: 'tripEditController'
-        }).when('/specificblogs/:param1', {
+        }).when('/:param1/:slug', {
             //template: '<div>Hi {{param1}}</div>',
             templateUrl: '/views/specificBlog.html',
             controller: 'specificBlogController'
