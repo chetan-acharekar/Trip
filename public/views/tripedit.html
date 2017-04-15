@@ -35,6 +35,7 @@
             {{currentTrip.title}}
         </h3>
                 <br>
+                {{currentTrip.intro}}
                 <div ta-bind="text" ng-model="currentTrip.description" ta-readonly='disabled'></div>
 
                 <br> By- {{currentTrip.createdBy}}
@@ -63,7 +64,7 @@
             </div>
             <hr>
             <hr>
-            <form ng-submit=updateTrip()>
+            <form ng-submit=updateTrip() ng-show="editable">
                 <input type="submit" value="update" class="btn btn-success" />
 
                 <br>
@@ -94,8 +95,6 @@
                 <br>
                 <div text-angular="text-angular" name="htmlcontent" ng-model="currentTrip.description   " ta-disabled='disabled'>
                 </div>
-
-                <!--            <textarea rows="10" cols="50" ng-model="currentTrip.description" class="form-control"></textarea>-->
                 <br>
                 <br>
             </form>
@@ -103,17 +102,5 @@
         <br>
         <br>
     </div>
-
-    <!--
-<div class="col-md-5" ng-show="editable">
-
-    Preview:
-    <br>
-    <h4>{{currentTrip.title}}
-        </h4>
-    <br>
-    <div ta-bind="text" ng-model="currentTrip.description" ta-readonly='disabled'></div>
-</div>
--->
 </div>
 </div>
