@@ -13,8 +13,10 @@ var express = require('express'),
     imageuploadroute = require('./routes/imageupload.js'),
     http = require('http').Server(app),
     MobileDetect = require('mobile-detect'),
-    io = require('socket.io')(http);
+    io = require('socket.io')(http),
+    compression = require('compression');
 
+app.use(compression());
 
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -24,7 +26,7 @@ app.use(function (req, res, next) {
 
 
 app.use(bodyparser.json());
-app.use(express.static('public'));
+app.use(express.static('public',{maxAge:86400000 }));
 
 
 
